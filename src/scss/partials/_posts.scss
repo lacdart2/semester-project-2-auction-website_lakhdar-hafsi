@@ -1,0 +1,117 @@
+
+
+
+.posts-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.1rem;
+    height: 90%;
+    min-width: 96%;
+    padding-bottom: 5rem;
+    margin-top:5rem;
+
+ 
+    .post {
+
+            padding: .5rem;       
+            border-radius: 0.2rem;
+            text-transform: capitalize;
+            font-size: smaller;
+            font-weight: 100;
+            padding-top: 0;
+  
+            .card {
+            
+                    width: 200px;
+                    height: 400px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    margin-bottom: .5rem;
+                    flex-basis: 25%;
+                    flex: 1;
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+                        rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+            
+            
+            
+                  
+
+                        .card-body {
+                            overflow-y: hidden;
+                            background-color: #a6b3f5;
+            
+                     
+                    .btn-primary {
+                        margin-top: auto;
+                        margin-bottom: 0;
+            
+            
+                    }
+            
+                    .card-details {
+                        height: 100px;
+                        overflow-y: hidden;
+            
+                        p {
+                            max-height: 100px;
+            
+                        }
+            
+                        .small {
+                            margin-top: auto;
+                            margin-bottom: 1rem;
+                        }
+            
+                        .fa-solid {
+                            color: $grey;
+                            padding-right: .5rem;
+            
+            
+                        }
+            
+                        .fa-pen {
+                            font-size: .8rem;
+                        }
+                    }
+            
+                    .post-image {                  
+                        margin-top: auto;
+                        max-height: 150px;
+                        /*     min-width: 200px;
+                            min-height: 200px; */
+                        margin-bottom: 1rem;
+                        overflow-y: hidden;
+                        outline: 5px solid red;
+            
+                        img {
+                            min-width: 100%;
+                            min-height: 100%;
+                            object-fit: cover;
+            
+                        }
+                    }
+            
+                }
+
+                }
+        }
+      
+}
+.home-posts-container {
+
+    width: 90vw;
+}
+.hero-posts {
+   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+
+
+   
+}

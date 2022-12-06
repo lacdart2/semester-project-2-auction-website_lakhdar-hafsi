@@ -1,0 +1,12 @@
+// media query mixins
+@mixin mediaSm {
+    @media screen and (max-width: 500px) {
+        @content;
+    }
+}
+
+@mixin mediaMd {
+    @media screen and (min-width:501px) and (max-width: 768px) {
+        @content;
+    }
+}

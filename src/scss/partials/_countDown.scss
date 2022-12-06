@@ -1,0 +1,89 @@
+/****************************  start countdown style *******/
+
+.countdown-wrapper {
+    margin: 1rem auto;
+    width:100%;
+    height: 100%;
+    outline: 2px solid red;
+   
+
+
+   .countdown-container {
+    display: block;
+    margin: 0 auto;
+   /*  width: 700px;
+    max-width: 80vw;
+    height: 50vh; */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: #000;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    outline: 2px solid#4b4444;
+    padding-bottom: 1rem;
+
+
+    &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+                h3 {
+                    font-size: 25px;
+                    margin: 10px 0 10px;
+                    margin-bottom: 1em;
+                    text-transform: capitalize;
+                    font-weight: 500;
+                   
+                }
+                .countdown {
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                  gap: .2rem;
+                   min-width: 90%;
+                   margin: 0 auto;
+                .time {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;                   
+                        /* margin: 15px; */
+                        width: 20%;
+                       
+                
+                        p {
+                            color: #000;
+                            margin: 0 0 5px;
+                            font-weight: 300;   
+                            text-align: center;           
+                            opacity: 1;
+                            animation: blinkBorder 1s linear infinite;
+                        }
+                
+                        small {
+                            text-transform: capitalize;
+                            font-weight: lighter;
+                        }
+                    }
+                }
+}
+
+
+@keyframes blinkBorder {
+    50% {
+        opacity: 0;
+    }
+}
+
+
+}

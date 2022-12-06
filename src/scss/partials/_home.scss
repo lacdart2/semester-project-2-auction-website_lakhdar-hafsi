@@ -1,0 +1,89 @@
+a {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+        color: inherit;
+    }
+}
+
+.logo {
+    position: relative;
+
+    .fa-thin {
+        position: absolute;
+        bottom: -12px;
+        right: -10px;
+
+        font-size: 2rem;
+    }
+}
+
+body {
+    font-family: 'Share Tech', sans-serif;
+}
+.posts-page, .hero {
+background-image: url(../../images/coding-image.jpg);
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: hue;
+    background-position: center;
+    overflow: hidden;
+}
+
+ .hero{
+   
+    min-height: 100vh;
+ 
+
+    .btn-group-lg {
+
+        width: 100%;
+
+        .btn-outline-success {
+
+            &:hover {
+                background-color: $green;
+                color: $black;
+            }
+        }
+
+        .btn-light {
+            &:hover {
+                border-color: $grey;
+                color: $black;
+            }
+        }
+
+    }
+
+    .hero-heading {
+        font-size: 5rem;
+    }
+
+    p {
+        font-size: 2rem;
+        width: 70%;
+        text-transform: capitalize;
+        color: $white;
+    }
+  
+}
+
+.fixed-bottom {
+    display: flex;
+
+    .container-fluid {
+
+
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .navbar-brand {
+            margin-bottom: 10px;
+        }
+    }
+
+
+}

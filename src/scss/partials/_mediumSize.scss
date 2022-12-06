@@ -1,0 +1,19 @@
+
+@include mediaMd {
+
+.posts-container {
+    width: 96%;
+   flex-direction: row;
+   flex-wrap: wrap;
+
+
+     .card {
+        min-width: 40%;
+      flex-basis: 1;
+  
+        
+        }
+    }
+}
+
+ 

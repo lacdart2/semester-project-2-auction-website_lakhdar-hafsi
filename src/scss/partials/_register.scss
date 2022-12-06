@@ -1,0 +1,28 @@
+/* .form-container {
+
+    height: 100vh;
+
+} */
+
+
+/* .register-heading {
+writing-mode: vertical-rl;
+    text-orientation: mixed;
+} */
+
+
+
+.reg-arrows {
+  
+  visibility: hidden;
+
+ margin-bottom:2rem;
+  
+   &.active {
+
+    visibility: visible;
+}
+.try-again {
+    margin-left: auto;
+}
+}
