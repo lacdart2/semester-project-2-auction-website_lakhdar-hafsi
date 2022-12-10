@@ -60,6 +60,10 @@ export async function postDetail() {
 
         function displayBids(bid) {
 
+            /*             var bidYear = elementDate.getFullYear() 
+                        var bidHours = elementDate.getHours();
+                        var bidMins = elementDate.getMinutes();
+                        var bidExactDate = (bidYear.toString() + "-" + monthNo.toString() + "-" + day.toString()); */
             bidsArray.forEach(bid => {
 
                 console.log("bid:" + bid.amount + "by: " + bid.bidderName)
