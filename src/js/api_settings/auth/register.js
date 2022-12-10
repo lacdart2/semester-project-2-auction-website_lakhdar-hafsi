@@ -12,7 +12,7 @@ export async function register(profile) {
     const registerURL = API_AUCTION_URL + action;
     console.log(registerURL);
     const body = JSON.stringify(profile);
-    console.log(body)
+    console.log(body);
     const response = await fetch(registerURL, {
         headers: {
             "Content-Type": "application/json",
@@ -25,11 +25,13 @@ export async function register(profile) {
     const result = await response.json();
 
     console.log(result);
+    console.log(result.credits);
+    
     if (result.id) {
+     /*    storage.saveToStorage("credit", accessToken) */
+        displayMessage("success", "", "Successfully registered","You just earned 1000 credit", ".message-container")
 
-        displayMessage("success", "", "Successfully registered", ".message-container")
-
-        setTimeout("location.href = '/profile/login/index.html';", 1500);
+        setTimeout("location.href = '/profile/login/index.html';", 1800);
 
 
 

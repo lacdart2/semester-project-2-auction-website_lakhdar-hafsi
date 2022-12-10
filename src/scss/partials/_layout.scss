@@ -45,6 +45,8 @@
 
 
 .menu{
+    display: flex;
+    flex-direction: column;
    a {
          text-decoration: none;
     color: #333;
@@ -53,7 +55,18 @@
           color: $green;
     }
     }
-  
+  .creditMenu {
+    margin-left: 1rem;
+    color: grey;
+    border-bottom: 1px solid grey;
+    border:1px solid grey;
+    border-radius: 20%;
+    padding: .5rem;
+
+    .fa-solid {
+        padding-left: .5rem;
+    }
+  }
 }
 
 .nav-item {

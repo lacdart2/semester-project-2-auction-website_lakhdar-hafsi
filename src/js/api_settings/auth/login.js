@@ -22,26 +22,27 @@ export async function login(profile) {
         body
 
     })
-    const { accessToken, ...user } = await response.json();
+    const { credits, accessToken, ...user } = await response.json();
     console.log(accessToken);
 
     storage.saveToStorage("token", accessToken)
     // save all except token
     storage.saveToStorage("profile", user)
 
+    storage.saveToStorage("credit", credits)
 
-    console.log(accessToken);
     if (accessToken) {
 
         const loggedIn = profile.email
+        //const loggedIn = profile.name
         const slicedName = loggedIn.split('@')[0];
 
-        displayMessage("success", slicedName, " logged in", ".message-container")
-        setTimeout("location.href = '/profile/home/index.html';", 1500);
-
+        displayMessage("success", slicedName, " logged in","", ".message-container")
+       setTimeout("location.href = '/profile/home/index.html';", 1500);
+    
 
     } else if (!accessToken) {
-        displayMessage("warning", "Invalid login details", ".message-container");
+        displayMessage("warning", "Invalid login details","", ".message-container");
     }
 
 } 

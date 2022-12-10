@@ -1,5 +1,6 @@
 const tokenKey = "token";
 const userKey = "profile";
+const creditKey = "credit";
 
 export function saveToken(token) {
     saveToStorage(tokenKey, token);
@@ -9,6 +10,20 @@ export function getToken() {
     return getFromStorage(tokenKey);
 }
 
+/********/
+
+export function saveCredit(credit) {
+    saveToStorage(creditKey, credit);
+}
+
+export function getCredit() {
+    return getFromStorage(creditKey);
+}
+
+/********/
+
+
+
 export function saveUser(profile) {
     saveToStorage(userKey, profile);
 }
@@ -17,7 +32,7 @@ export function getUsername() {
     const user = getFromStorage(userKey);
 
     if (user) {
-        return user.username;
+        return user.name;
     }
 
     return null;
