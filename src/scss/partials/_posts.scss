@@ -1,6 +1,4 @@
 
-
-
 .posts-container {
     display: flex;
     align-items: center;
@@ -11,6 +9,7 @@
     min-width: 96%;
     padding-bottom: 5rem;
     margin-top:5rem;
+  
 
  
     .post {
@@ -21,7 +20,7 @@
             font-size: smaller;
             font-weight: 100;
             padding-top: 0;
-  
+
             .card {
             
                     width: 200px;
@@ -32,19 +31,16 @@
                     flex-direction: column;
                     margin-bottom: .5rem;
                     flex-basis: 25%;
-                    flex: 1;
+            
                     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
                         rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-            
-            
-            
-                  
-
+           
                         .card-body {
                             overflow-y: hidden;
                             background-color: #a6b3f5;
-            
-                     
+   
+                 .card-top{
+
                     .btn-primary {
                         margin-top: auto;
                         margin-bottom: 0;
@@ -55,7 +51,7 @@
                     .card-details {
                         height: 100px;
                         overflow-y: hidden;
-            
+                        
                         p {
                             max-height: 100px;
             
@@ -78,34 +74,38 @@
                         }
                     }
             
-                    .post-image {                  
-                        margin-top: auto;
-                        max-height: 150px;
-                        /*     min-width: 200px;
-                            min-height: 200px; */
-                        margin-bottom: 1rem;
-                        overflow-y: hidden;
-                        outline: 5px solid red;
-            
-                        img {
-                            min-width: 100%;
-                            min-height: 100%;
-                            object-fit: cover;
-            
-                        }
-                    }
-            
+                }  
+               
                 }
 
                 }
         }
       
 }
+.card-heading {
+max-width: 70%;
+
+.seller-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+a {
+    border-bottom: 2px solid #414040;
+}
+
+    .profile-avatar {
+        width: 50px;
+        height: 30px;
+        border-radius: 5px;
+    }
+}
+}
 .home-posts-container {
 
     width: 90vw;
-}
-.hero-posts {
+
+    .hero-posts {
    
     display: flex;
     justify-content: space-between;
@@ -115,3 +115,82 @@
 
    
 }
+}
+
+.post-image {
+    margin-top: auto;
+
+   width: 200px;
+    height: 200px;
+    margin-bottom: 1rem;
+    overflow-y: hidden;
+/*  border-radius: 50%; */
+
+    img {
+
+        min-width: 100%;
+        min-height: 100%;
+      
+        object-fit: cover;
+
+    }
+}
+        .card-title {
+           
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+
+
+
+.card-details {
+
+
+                   .listing-info {
+                    margin-bottom: 1rem;
+.listing-update {
+    p {
+        color: #414040;
+        width: 100%;
+        font-size: 1rem;
+    }
+}
+                    .bids-number {
+                margin-left: 1rem;
+                    }
+                       .seller-info {
+                           width: 100%;
+                           display: flex;
+                           align-items: center;
+                           justify-content: left;
+                          
+
+                           .profile-avatar {
+                            width: 50px;
+                            height: 30px;
+                            border-radius: 5px;
+                           }
+                       
+                           /* .avatar {
+                            .btn-avatar {
+                                 width: 50px;
+                            height: 43px;
+                            margin-left: .6rem;
+                            padding-bottom: 0;
+                                .seller-avatar {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                border-radius: 50%;
+                            } 
+                            }
+                           
+                           
+                           } */
+                       }
+                   }
+}
+
+      
