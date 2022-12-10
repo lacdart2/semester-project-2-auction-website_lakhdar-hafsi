@@ -16,28 +16,28 @@ const action = "/listings";
 
 
     const getListingURL = `${API_AUCTION_URL}${action}`;
-
+    // to add : active tag to url
 
     console.log(getListingURL)
     try {
         const response = await fetchToken(getListingURL)
         //console.log(response)
         const json = await response.json();
-     /*    let latestJson = json.reverse(); */
+        /*    let latestJson = json.reverse(); */
         //console.log(json);
 
 
 
         homePostsContainer.innerHTML = "";
         allListingsCount.innerHTML = "";
-
+        // get the last active bids :
         const jsonLast = json.slice(-3);
         //console.log(jsonLast)
         jsonLast.forEach(function (post) {
-         
 
-                homePostsContainer.innerHTML +=
-                    `<a class="post" href = "/post/detail/index.html?id=${post.id}" >
+
+            homePostsContainer.innerHTML +=
+                `<a class="post" href = "/post/detail/index.html?id=${post.id}" >
                         <div class="card w-25 ">
                             <div class=" card-body text-start overflow-hidden d-flex flex-column align-items-left  p-3">
                                 <div class="card-top">
@@ -64,13 +64,13 @@ const action = "/listings";
                         </div>
                      <a/> `
 
-                allListingsCount.innerHTML = `
+            allListingsCount.innerHTML = `
                                         <small>
                                            <i class="fa-solid fa-cloud-arrow-up"></i>
                                            number recent posts:  ${json.length}
                                         </small>
                                      `
-          
+
 
         });
 

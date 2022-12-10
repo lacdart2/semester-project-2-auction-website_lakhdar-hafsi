@@ -1,6 +1,7 @@
 /* import * as storage from "../utils/storage.js"; */
 import { getUsername } from "../utils/storage.js";
 const container = document.querySelector(".menu-container");
+import * as storage from "../utils/storage.js";
 /* import * as login from "../api_settings/auth/login.js";
 const loggedIn = profile.email
 const slicedName = loggedIn.split('@')[0]; */
@@ -8,7 +9,7 @@ const slicedName = loggedIn.split('@')[0]; */
 
 /* import { slicedName, loggedIn } from "../api_settings/auth/login.js" */
 /* import { createName } from "./createName.js" */
-
+const userCredit = storage.getFromStorage("credit")
 export default function createMenu() {
     const { pathname } = document.location;
 
@@ -25,11 +26,12 @@ export default function createMenu() {
         authLink = `<a href="posts.html" class="${pathname === "/posts/index.html" ? "active" : ""}">Add Post</a>
                     <span>Hi${username}</span>`;
     }
-
+   
     container.innerHTML = `<div class="menu">
-                               
-                         <i class="fa-regular fa-user"></i> ${userTag} 
-
+                            <div class="creditSpan">    
+                                 <i class="fa-regular fa-user"></i> ${userTag} 
+                                 <span class="creditMenu">${userCredit}<i class="fa-solid fa-dollar-sign"></i></span>
+                            </div>
                         </div>`;
 }
 /* 
