@@ -66,6 +66,23 @@ export async function postDetail() {
                         var bidExactDate = (bidYear.toString() + "-" + monthNo.toString() + "-" + day.toString()); */
             bidsArray.forEach(bid => {
 
+                const bidEvent = new Date(bid.created);
+                const createdBid = bidEvent.toLocaleString();
+                console.log(createdBid.split("."));
+                const createdBidArray = createdBid.split(".");
+                const bidDate = createdBidArray[0].split(",")[0];
+                const bidTime = createdBidArray[0].split(",")[1];
+
+                console.log(createdBidArray);
+                /*          console.log(bid.created.split("T"));
+                         const sliptCreated = bid.created.split("T");
+                         console.log(sliptCreated[1].split("Z")); */
+
+
+
+                console.log(bid.created.toLocaleString());
+                console.log(bid.created.split('T')[1] + "/")
+
                 console.log("bid:" + bid.amount + "by: " + bid.bidderName)
                 bidsContainer.innerHTML += `<div class="bid-row text-dark border-bottom p-2 d-flex flex-row align-items-center  justify-content-between">
                                                 <h6>${bid.amount},-  by
@@ -74,7 +91,7 @@ export async function postDetail() {
                                                   @${bid.bidderName} 
                                                  </a></h6> 
                                                 
-                                                <span class="text-dark fs-6">${bid.created}</span>
+                                                <span class="text-dark fs-6">${bidDate} -- ${bidTime}</span>
                                             </div>`
             });
         }
@@ -158,9 +175,9 @@ export async function postDetail() {
                                                                         @ ${json.seller.name} <img class="profile-avatar" src="${json.seller.avatar}"/>
                                                                     </a>
                                                                                                                               
-                                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                                        <button type="button" class="btn btn-primary " data-bs-toggle="modal"
                                                                                         data-bs-target="#exampleModal">
-                                                                                    <i class="fa-regular fa-timer "></i>${bidsCounter}
+                                                                                  <i class="fa-solid fa-clock-rotate-left pe-2"></i>${bidsCounter}
                                                                          </button>
                                                                                                                                                                                                     
                                                            
