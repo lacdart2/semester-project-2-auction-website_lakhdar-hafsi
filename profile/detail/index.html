@@ -76,34 +76,43 @@
     </header>
     <main>
         <div class="container hero">
-            <div
-                class="container d-flex align-content-start justify-content-start col-12 col-md-10  flex-grow-1 mt-5 text-light">
-                <div class="home-listings-listings container d-flex row">
-                    <div
-                        class="container hero-listings p-4 d-flex flex-column align-items-center justify-content-center gap-3 ">
-                        <div class="latest-listings pt-0 ">
-                            <h3>Latest listings </h3>
-                            <div
-                                class="listings-container-preview text-black d-flex flex-row align-items-center justify-content-around ">
-                                Loading listings...
-                            </div>
-                        </div>
-                        <div class="view-all-listings">
-                            <h3 class=" mb-3  ">view all products </h3>
-                            <div class="card-body text-white">
+            <div class="container col-12 col-md-6 login-section flex-grow-1 mt-2 text-light pt-2 mb-5">
+                <div class="container d-flex flex-column justify-content-center align-items-center  ">
+                    <h2 class="col-12 col-md-12 h1  p-3  d-flex align-items-center justify-content-start page-heading">
+                        profile details </h2>
+                    <div class="col-12 col-md-12   px-3 pt-2 pb-4 border text-black ">
+                        <div class="listing-container">Loading profile details...</div>
+                        <!-- Button trigger modal in js -->
 
-                                <small>
-                                    <div class="listings-count"></div>
-                                </small>
-                                <a href="/posts/index.html" class="btn btn-primary mt-2">View All <i
-                                        class="fa-solid fa-arrow-right"></i></a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Bids History</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body bids-content border-0 p-2">
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+
                     </div>
+                    <div class="message-container"></div>
                 </div>
             </div>
         </div>
-
 
     </main>
     <footer>
