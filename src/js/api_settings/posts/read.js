@@ -1,26 +1,42 @@
 
 import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
+
 /* import { mediaChecker } from "../../ui/mediaChecker.js"; */
-/* import { remainingAll } from "../../ui/allCountDown.js"; */
 /* import { placeListings } from "./popular.js"; */
 const action = "/listings";
-const getListingsURL = `${API_AUCTION_URL}${action}?_seller=true`;
+const getListingsURL = `${API_AUCTION_URL}${action}?_seller=true&sort=created&sortOrder=desc`;
+/* const myListingsURL = `${API_AUCTION_URL}${action}?_tag=frame`; */
+
 
 
 export async function read() {
 
-    const postsContainer = document.querySelector(".posts-container");
+    const listingsContainer = document.querySelector(".listings-container");
 
     try {
         const response = await fetchToken(getListingsURL)
         const json = await response.json();
-
         console.log(json);
-
         const result = json.filter(listing => listing._count.bids > 0);
         const result2 = json.filter(listing => listing._count.bids <= 0);
+
         const totalArray = result.concat(result2);
+
+
+        // display only still active bids ,not over dated
+        const today = new Date();
+        let stillActive = [];
+        totalArray.map((listing) => {
+
+            const listingDate = new Date(listing.endsAt);
+            if (listingDate >= today) {
+                // add to new array with only active
+                stillActive.push(listing);
+            }
+        })
+        console.log(stillActive);
+        console.log(result.length, result2.length, totalArray.length);
         console.log(totalArray[3].media[0]);
 
         /*      const listWithImages = []
@@ -58,19 +74,12 @@ export async function read() {
         console.log(result);
         console.log([result2]);
         console.log(totalArray);
-        /*      console.log(totalArray);
-       console.log(json.unshift(result)); */
 
-
-
-        //let latestJson = json.reverse();
-        //let latestJson = result.reverse();
-
-
-        //console.log(latestJson);
 
         console.log(json[1].endsAt);
         /*   console.log(json.endsAt.toLocaleString()) */
+
+        // listing end date :
         const endsDate = json[4].endsAt.toLocaleString();
         const splitEndDate = endsDate.split("T");
         console.log(splitEndDate);
@@ -79,50 +88,52 @@ export async function read() {
         const event = new Date(totalArray.endsAt);
         console.log(json[1].endsAt);
 
-        postsContainer.innerHTML = "";
+        listingsContainer.innerHTML = "";
 
 
-        totalArray.forEach(function (post) {
+        stillActive.forEach(function (listing) {
 
-            const endsDate = post.endsAt.toLocaleString();
+            const endsDate = listing.endsAt.toLocaleString();
             const splitEndDate = endsDate.split("T");
             console.log(splitEndDate);
             const ends = splitEndDate[0];
-            if (post.media.length === 1) {
 
-                postsContainer.innerHTML +=
-                    `<a class="post" href = "/post/detail/index.html?id=${post.id}">
+            // showing only results with media :
+            if (listing.media.length === 1) {
+
+                listingsContainer.innerHTML +=
+                    `<a class="listing" href = "/post/detail/index.html?id=${listing.id}">
                         <div class="card">
                             <div class="card-body text-start overflow-hidden d-flex flex-column align-items-left">
                                 <div class="card-top">
                                 <div class="card-heading">
-                                    <h5 class="card-title">${post.title}</h5>
+                                    <h5 class="card-title">${listing.title}</h5>
                                    
                                  
                                  </div>
-                                    <div class="card-details">
+                                 <div class="card-details">
                                     
                                        
-                                        <small>
+                                        <small class="text-dark">
                                         
                                           <i class="fa-sharp fa-solid fa-clock"></i>
-                                         ${ends}
+                                             ${ends}
                                         </small>
                             
                                     </div>
                                   
-                                     <div class="post-image">
-                                            <img src="${post.media}" class="img-fluid rounded" alt="${post.title}">
+                                     <div class="listing-image">
+                                            <img src="${listing.media}" class="img-fluid rounded" alt="${listing.title}">
                                      </div>     
                                       <div class="seller-info">
-                                        <a href= "/post/detail/index.html?id=${post.id}" class="">
-                                                @ ${post.seller.name}
+                                        <a href= "/post/detail/index.html?id=${listing.id}" class="">
+                                                @ ${listing.seller.name}
                                                
                                          </a>
                                      </div>   
                                 </div>
-                                <a href="/post/detail/index.html?id=${post.id}" class="btn btn-primary mb-2">Place a Bid</a>
-                                <a href="/post/detail/index.html?id=${post.id}" class="btn btn-secondary">totals bids:${post._count.bids} </a>
+                                <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-primary mb-2">Place a Bid</a>
+                                <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-secondary">totals bids:${listing._count.bids} </a>
                             </div> 
                         </div>
                      </a> `

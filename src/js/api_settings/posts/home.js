@@ -3,6 +3,7 @@
 
 import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
+
 /* import { remaining } from "../../ui/countDown.js";
 import { postDetail } from "./postDetails.js"; */
 
@@ -11,13 +12,13 @@ import { postDetail } from "./postDetails.js"; */
 const action = "/listings";
 
 (async function readHome() {
-    const homePostsContainer = document.querySelector(".posts-container-preview");
-    const allListingsCount = document.querySelector(".posts-count");
+    const homeListingsContainer = document.querySelector(".listings-container-preview");
+    const allListingsCount = document.querySelector(".listings-count");
 
 
-    const getListingURL = `${API_AUCTION_URL}${action}`;
+    const getListingURL = `${API_AUCTION_URL}${action}?_seller=true&sort=created&sortOrder=desc`;
     // to add : active tag to url
-
+    /*  read(); */
     console.log(getListingURL)
     try {
         const response = await fetchToken(getListingURL)
@@ -27,50 +28,69 @@ const action = "/listings";
         //console.log(json);
 
 
-
-        homePostsContainer.innerHTML = "";
+        console.log(json);
+        homeListingsContainer.innerHTML = "";
         allListingsCount.innerHTML = "";
         // get the last active bids :
-        const jsonLast = json.slice(-3);
+        const jsonLast = json.slice(-10);
         //console.log(jsonLast)
-        jsonLast.forEach(function (post) {
 
 
-            homePostsContainer.innerHTML +=
-                `<a class="post" href = "/post/detail/index.html?id=${post.id}" >
-                        <div class="card w-25 ">
-                            <div class=" card-body text-start overflow-hidden d-flex flex-column align-items-left  p-3">
+        jsonLast.forEach(function (listing) {
+
+            // listing end date :
+            const endsDate = json[4].endsAt.toLocaleString();
+            const splitEndDate = endsDate.split("T");
+            console.log(splitEndDate);
+            const ends = splitEndDate[0];
+            if (listing.media.length === 1) {
+
+                homeListingsContainer.innerHTML +=
+                    `<a class="listing listing-home" href = "/post/detail/index.html?id=${listing.id}">
+                        <div class="card card-home">
+                            <div class="card-body text-start overflow-hidden d-flex flex-column align-items-left">
                                 <div class="card-top">
-    
-                                    <h5 class="card-title">${post.title}</h5>
-    
-                                    <div class="card-details">
-                                        <p class="fs-6 text-left">
-                                            <i class="fa-solid fa-pen"></i>
-                                            ${post.body}
-                                        </p>
-                                        <div class="post-image">
-                                           <img src="${post.media}" class="img-thumbnail mb-2" alt="${post.title}">
-                                         </div>
-                                        <small>
-                                            <i class="fa-solid fa-calendar-days"></i>
-                                            ${post.updated}
+                                <div class="card-heading">
+                                    <h5 class="card-title">${listing.title}</h5>
+                                   
+                                 
+                                 </div>
+                                 <div class="card-details">
+                                    
+                                       
+                                        <small class="text-dark">
+                                        
+                                          <i class="fa-sharp fa-solid fa-clock"></i>
+                                             ${ends}
                                         </small>
+                            
                                     </div>
+                                  
+                                     <div class="listing-image">
+                                            <img src="${listing.media}" class="img-fluid rounded" alt="${listing.title}">
+                                     </div>     
+                                      <div class="seller-info">
+                                        <a href= "/post/detail/index.html?id=${listing.id}" class="">
+                                                @ ${listing.seller.name}
+                                               
+                                         </a>
+                                     </div>   
                                 </div>
-                          
-                                <a href="#" class="btn btn-primary w-50 mt-2">Read More</a>
-                            </div>
+                                <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-primary mb-2">Place a Bid</a>
+                                <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-secondary">totals bids:${listing._count.bids} </a>
+                            </div> 
                         </div>
-                     <a/> `
+                     </a> `
 
-            allListingsCount.innerHTML = `
+
+                allListingsCount.innerHTML = `
                                         <small>
                                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                                           number recent posts:  ${json.length}
+                                           recent added listings:  ${json.length}
                                         </small>
                                      `
 
+            }
 
         });
 
@@ -82,4 +102,30 @@ const action = "/listings";
 })();
 
 
-
+/* 
+`<a class="post" href = "/post/detail/index.html?id=${listing.id}" >
+                        <div class="card w-25 ">
+                            <div class=" card-body text-start overflow-hidden d-flex flex-column align-items-left  p-3">
+                                <div class="card-top">
+    
+                                    <h5 class="card-title">${listing.title}</h5>
+    
+                                    <div class="card-details">
+                                        <p class="fs-6 text-left">
+                                            <i class="fa-solid fa-pen"></i>
+                                            ${listing.body}
+                                        </p>
+                                        <div class="listing-image">
+                                           <img src="${listing.media}" class="img-thumbnail mb-2" alt="${listing.title}">
+                                         </div>
+                                        <small>
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                            ${listing.updated}
+                                        </small>
+                                    </div>
+                                </div>
+                          
+                                <a href="#" class="btn btn-primary w-50 mt-2">Read More</a>
+                            </div>
+                        </div>
+                     <a/> ` */

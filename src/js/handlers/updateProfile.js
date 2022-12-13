@@ -1,4 +1,4 @@
-
+/* 
 import { getProfile, updateProfile } from "../api_settings/profiles/index.js";
 import { getFromStorage } from "../utils/storage.js";
 
@@ -39,4 +39,4 @@ export async function setUpdateProfileListener() {
             updateProfile(profile)
         })
     }
-} 
+}  */

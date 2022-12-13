@@ -9,17 +9,17 @@ const method = "put";
 
 
 
-export async function updatePost(postData) {
+export async function updateListing(postData) {
 
     if (!postData.id) {
         alert("update needs an ID");
     }
-    const updatePostURL = `${API_AUCTION_URL}${action}/${postData.id}`;
+    const updateListingURL = `${API_AUCTION_URL}${action}/${postData.id}`;
 
     try {
 
 
-        const response = await fetchToken(updatePostURL, {
+        const response = await fetchToken(updateListingURL, {
             method,
             body: JSON.stringify(postData),
 
