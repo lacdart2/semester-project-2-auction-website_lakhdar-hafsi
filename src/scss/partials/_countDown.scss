@@ -4,7 +4,7 @@
     margin: 1rem auto;
     width:100%;
     height: 100%;
-    outline: 2px solid red;
+
    
 
 
@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    outline: 2px solid#4b4444;
+ /*    outline: 2px solid#4b4444; */
     padding-bottom: 1rem;
 
 
@@ -35,35 +35,37 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
+           /*  background-color: rgba(0, 0, 0, 0.3); */
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
         }
                 h3 {
                     font-size: 25px;
                     margin: 10px 0 10px;
                     margin-bottom: 1em;
                     text-transform: capitalize;
-                    font-weight: 500;
+                    font-weight: 300;
                    
                 }
                 .countdown {
                    display: flex;
                    align-items: center;
                    justify-content: center;
-                  gap: .2rem;
+                   gap: .2rem;
                    min-width: 90%;
                    margin: 0 auto;
-                .time {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;                   
-                        /* margin: 15px; */
-                        width: 20%;
-                       
+                     .time {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;                   
+                            /* margin: 15px; */
+                            width: 20%;
+                        
                 
                         p {
                             color: #000;
                             margin: 0 0 5px;
+                            font-size: 1rem;
                             font-weight: 300;   
                             text-align: center;           
                             opacity: 1;

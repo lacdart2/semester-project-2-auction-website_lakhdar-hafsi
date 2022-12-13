@@ -11224,7 +11224,6 @@ li.menu-section {
   margin: 1rem auto;
   width: 100%;
   height: 100%;
-  outline: 2px solid red;
 }
 .countdown-wrapper .countdown-container {
   display: block;
@@ -11242,7 +11241,7 @@ li.menu-section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  outline: 2px solid #4b4444;
+  /*    outline: 2px solid#4b4444; */
   padding-bottom: 1rem;
 }
 .countdown-wrapper .countdown-container::after {
@@ -11252,14 +11251,15 @@ li.menu-section {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  /*  background-color: rgba(0, 0, 0, 0.3); */
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 .countdown-wrapper .countdown-container h3, .countdown-wrapper .countdown-container .h3 {
   font-size: 25px;
   margin: 10px 0 10px;
   margin-bottom: 1em;
   text-transform: capitalize;
-  font-weight: 500;
+  font-weight: 300;
 }
 .countdown-wrapper .countdown-container .countdown {
   display: flex;
@@ -11280,6 +11280,7 @@ li.menu-section {
 .countdown-wrapper .countdown-container .countdown .time p {
   color: #000;
   margin: 0 0 5px;
+  font-size: 1rem;
   font-weight: 300;
   text-align: center;
   opacity: 1;
@@ -11316,42 +11317,64 @@ li.menu-section {
   .hero .btn-group-lg .btn-lg, .hero .btn-group-lg > .btn {
     min-width: 100%;
   }
-  .hero .home-posts-container .hero-posts {
-    flex-direction: column;
-    height: 70vh;
-    align-items: center;
-    justify-content: space-around;
-    padding-top: 0;
-    gap: 4rem;
-    text-transform: capitalize;
-  }
-  .hero .home-posts-container .hero-posts .latest-post .posts-container-preview .card {
-    text-align: left;
-    padding-left: 0;
-    min-width: 100%;
-  }
-  .hero .home-posts-container .hero-posts .view-all-posts {
-    padding: 2rem 2rem 2rem 0;
-    font-size: 1.2rem;
-  }
   .hero .fixed-bottom .navbar-brand {
     font-size: 1rem;
   }
-  .hero .posts-container {
+  .hero .listings-container {
     flex-direction: column;
   }
-  .hero .posts-container .card {
+  .hero .listings-container .card {
     flex-basis: 100%;
     flex-grow: 1;
   }
 }
+.home-listings-container .hero-listings {
+  flex-direction: column;
+  height: 70vh;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 0;
+  gap: 4rem;
+  text-transform: capitalize;
+}
+.home-listings-container .hero-listings .latest-listings .listings-container-preview {
+  display: flex;
+  flex-wrap: wrap;
+}
+.home-listings-container .hero-listings .latest-listings .listings-container-preview .card {
+  text-align: left;
+  padding-left: 0;
+  min-width: 100%;
+}
+.home-listings-container .hero-listings .view-all-listings {
+  padding: 2rem 2rem 2rem 0;
+  font-size: 1.2rem;
+}
+
+.card-home {
+  outline: 5px solid red;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.card-home .card-heading .card-title {
+  font-size: 0.5rem;
+}
+.card-home .listing-image {
+  width: 100%;
+  height: 20%;
+}
+.card-home small, .card-home .small {
+  font-size: 0.5rem;
+}
+
 @media screen and (min-width: 501px) and (max-width: 768px) {
-  .posts-container {
+  .listings-container {
     width: 96%;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .posts-container .card {
+  .listings-container .card {
     min-width: 40%;
     flex-basis: 1;
   }
@@ -11378,9 +11401,9 @@ body {
   font-family: "Share Tech", sans-serif;
 }
 
-.posts-page, .hero {
-  background-image: url(../../images/coding-image.jpg);
-  background-color: rgba(0, 0, 0, 0.5);
+.listings-page, .hero {
+  /* background-image: url(../../images/coding-image.jpg); */
+  /*   background-color: rgba(0, 0, 0, 0.5); */
   background-blend-mode: hue;
   background-position: center;
   overflow: hidden;
@@ -11443,7 +11466,7 @@ writing-mode: vertical-rl;
   margin-left: auto;
 }
 
-.posts-container {
+.listings-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11454,7 +11477,7 @@ writing-mode: vertical-rl;
   padding-bottom: 5rem;
   margin-top: 5rem;
 }
-.posts-container .post {
+.listings-container .listing {
   padding: 0.5rem;
   border-radius: 0.2rem;
   text-transform: capitalize;
@@ -11462,7 +11485,7 @@ writing-mode: vertical-rl;
   font-weight: 100;
   padding-top: 0;
 }
-.posts-container .post .card {
+.listings-container .listing .card {
   width: 200px;
   height: 400px;
   display: flex;
@@ -11471,32 +11494,33 @@ writing-mode: vertical-rl;
   flex-direction: column;
   margin-bottom: 0.5rem;
   flex-basis: 25%;
+  font-family: "Noto Serif", serif;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
-.posts-container .post .card .card-body {
+.listings-container .listing .card .card-body {
   overflow-y: hidden;
   background-color: #a6b3f5;
 }
-.posts-container .post .card .card-body .card-top .btn-primary {
+.listings-container .listing .card .card-body .card-top .btn-primary {
   margin-top: auto;
   margin-bottom: 0;
 }
-.posts-container .post .card .card-body .card-top .card-details {
+.listings-container .listing .card .card-body .card-top .card-details {
   height: 100px;
   overflow-y: hidden;
 }
-.posts-container .post .card .card-body .card-top .card-details p {
+.listings-container .listing .card .card-body .card-top .card-details p {
   max-height: 100px;
 }
-.posts-container .post .card .card-body .card-top .card-details .small {
+.listings-container .listing .card .card-body .card-top .card-details .small {
   margin-top: auto;
   margin-bottom: 1rem;
 }
-.posts-container .post .card .card-body .card-top .card-details .fa-solid {
+.listings-container .listing .card .card-body .card-top .card-details .fa-solid {
   color: #989898;
   padding-right: 0.5rem;
 }
-.posts-container .post .card .card-body .card-top .card-details .fa-pen {
+.listings-container .listing .card .card-body .card-top .card-details .fa-pen {
   font-size: 0.8rem;
 }
 
@@ -11518,25 +11542,24 @@ writing-mode: vertical-rl;
   border-radius: 5px;
 }
 
-.home-posts-container {
+.home-listings-container {
   width: 90vw;
 }
-.home-posts-container .hero-posts {
+.home-listings-container .hero-listings {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
 }
 
-.post-image {
+.listing-image {
   margin-top: auto;
   width: 200px;
   height: 200px;
   margin-bottom: 1rem;
   overflow-y: hidden;
-  /*  border-radius: 50%; */
 }
-.post-image img {
+.listing-image img {
   min-width: 100%;
   min-height: 100%;
   object-fit: cover;
@@ -11546,6 +11569,7 @@ writing-mode: vertical-rl;
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
+  font-family: "Fjalla One", sans-serif;
 }
 
 .card-details .listing-info {
@@ -11555,6 +11579,7 @@ writing-mode: vertical-rl;
   color: #414040;
   width: 100%;
   font-size: 1rem;
+  font-family: "Noto Serif", serif;
 }
 .card-details .listing-info .bids-number {
   margin-left: 1rem;
@@ -11653,6 +11678,17 @@ writing-mode: vertical-rl;
 
 .nav-item .active {
   color: #0fc36f;
+}
+
+.container h2, .container .h2, .container h3, .container .h3 {
+  font-family: "Noto Serif", serif;
+  text-transform: uppercase;
+  padding-left: 0;
+  line-height: 1.5rem;
+}
+.container p, .container a, .container span {
+  font-family: "Fjalla One", sans-serif;
+  font-weight: lighter;
 }
 
 /*# sourceMappingURL=style.css.map */
