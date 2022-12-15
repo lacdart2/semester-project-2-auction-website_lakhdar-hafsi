@@ -6,12 +6,16 @@ import * as apiCalls from "./api_settings/posts/index.js";
 import * as triggers from "./handlers/index.js";
 
 import * as profileCalls from "./api_settings/profiles/index.js"
+import * as auth from "./api_settings/auth/index.js";
+/* import * as storage from "./utils/storage.js"; */
 
 
 
 const path = location.pathname;
 console.log(path);
 
+let registerPath = "/profile/register/index.html";
+let loginPath = "/profile/login/index.html";
 
 
 
@@ -19,7 +23,13 @@ console.log(path);
 
 if (path === "/profile/home/index.html") {
 
+    /*   if (storage.profile) { */
     createMenu();
+    /* auth.logoutListener(); */
+    /*     } */
+
+
+
     apiCalls.readHome();
 
 }/* else if (path === "/profile/edit/index.html") {
@@ -28,33 +38,45 @@ if (path === "/profile/home/index.html") {
     profileCalls.updateProfile();
     createMenu();
 } */
-/* else if (path === "/profile/detail/index.html") {
+else if (path === "/profile/detail/index.html") {
 
-    triggers.setUpdateProfileListener();
+    /*   triggers.setUpdateProfileListener(); */
     profileCalls.getProfile();
     createMenu();
-} */
+}
 // profiles 
 else if (path === "/profiles/index.html") {
 
     profileCalls.readAllProfiles();
+
     createMenu();
 
 }
-// auth
+// auth register
 else if (path === "/profile/register/index.html") {
 
     triggers.setRegisterFormListener();
 
-} else if (path === "/profile/login/index.html") {
+}
+// auth login
+else if (path === "/profile/login/index.html") {
 
     triggers.setLoginFormListener();
 
 }
+// auth logout
+/* else if (path !== registerPath && path !== loginPath) {
 
+    auth.logout();
+
+
+} */
 // listings
 else if (path === "/posts/index.html") {
+    /*     if (storage.profile) { */
     createMenu();
+    /*     } */
+
     apiCalls.read();
 }
 
