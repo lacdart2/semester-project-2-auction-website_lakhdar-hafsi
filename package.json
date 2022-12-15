@@ -1,6 +1,6 @@
 {
   "name": "semester-project-2-auction-website_lakhdar-hafsi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "semester project 2 for noroff second year front end development -auction website",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
   "author": "lakhdar hafsi",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.2.0"
+    "bootstrap": "^5.2.0",
+    "bootstrap-icons": "^1.10.2"
   },
   "devDependencies": {
     "live-server": "^1.2.2",

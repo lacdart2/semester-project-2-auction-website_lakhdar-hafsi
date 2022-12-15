@@ -46,7 +46,9 @@
 
 .menu{
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
    a {
          text-decoration: none;
     color: #333;
@@ -67,10 +69,53 @@
         padding-left: .5rem;
     }
   }
+  .user-avatar-img {
+    width: 30px;
+    height: 30px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    object-fit: cover;
+   
+  }
 }
 
 .nav-item {
 .active {
     color: $green;
 }
+}
+.container {
+    h2 , h3 {
+       
+        font-family: 'Noto Serif', serif;
+        text-transform: uppercase;
+        padding-left:0;
+        line-height: 1.5rem;
+    
+    }
+    p, a, span {
+        font-family: 'Fjalla One', sans-serif;
+        font-weight: lighter;
+    }
+}
+.logout-btn {
+
+
+  [data-visible=loggedIn] {
+      display: none;
+  }
+
+  [data-visible=loggedOut] {
+      display: initial;
+  }
+
+  &.logged-in {
+      [data-visible=loggedIn] {
+          display: initial;
+      }
+
+      [data-visible=loggedOut] {
+          display: none;
+      }
+  }
 }

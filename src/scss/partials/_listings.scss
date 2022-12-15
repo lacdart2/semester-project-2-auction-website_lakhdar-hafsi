@@ -1,5 +1,5 @@
 
-.posts-container {
+.listings-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +12,7 @@
   
 
  
-    .post {
+    .listing {
 
             padding: .5rem;       
             border-radius: 0.2rem;
@@ -31,6 +31,7 @@
                     flex-direction: column;
                     margin-bottom: .5rem;
                     flex-basis: 25%;
+                font-family: 'Noto Serif', serif;
             
                     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
                         rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
@@ -52,10 +53,12 @@
                         height: 100px;
                         overflow-y: hidden;
                         
-                        p {
-                            max-height: 100px;
-            
-                        }
+                        .desc {
+                                max-height: 100px;
+                                font-weight: 1rem;
+                                color: red;
+                        
+                            }
             
                         .small {
                             margin-top: auto;
@@ -80,10 +83,12 @@
 
                 }
         }
-      
+       
 }
+
 .card-heading {
-max-width: 70%;
+/* max-width: 70%; */
+text-align: left;
 
 .seller-info {
     width: 100%;
@@ -98,14 +103,15 @@ a {
         width: 50px;
         height: 30px;
         border-radius: 5px;
+       
     }
 }
 }
-.home-posts-container {
+.home-listings-container {
 
     width: 90vw;
 
-    .hero-posts {
+    .hero-listings {
    
     display: flex;
     justify-content: space-between;
@@ -117,14 +123,47 @@ a {
 }
 }
 
-.post-image {
+.listing-image {
     margin-top: auto;
-
-   width: 200px;
+    width: 200px;
     height: 200px;
     margin-bottom: 1rem;
     overflow-y: hidden;
-/*  border-radius: 50%; */
+    position: relative;
+
+  /* .img-counter {
+    color: #fefefe;
+    padding: 1rem;
+    font-size: 1rem;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 10%;
+    right:10%;
+  } */
+.dots {
+    width: 30%;
+    height: 20px;
+    background: rgba(0, 0, 0, .5);
+  border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    left:50%;
+    transform: translate(-50%, -10%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:.5rem;
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #fff;
+
+    }
+}
 
     img {
 
@@ -140,6 +179,7 @@ a {
             font-size: 1.5rem;
             font-weight: bold;
             text-transform: uppercase;
+        font-family: 'Fjalla One', sans-serif;
         }
 
 
@@ -150,16 +190,29 @@ a {
 
                    .listing-info {
                     margin-bottom: 1rem;
-.listing-update {
-    p {
-        color: #414040;
-        width: 100%;
-        font-size: 1rem;
-    }
-}
+                        
+                    .listing-update {
+                       border-left: 2px solid #414040;
+                        padding:1rem 2rem;
+                            p {
+                                color: #414040;
+                                width: 100%;
+                                font-size: 1rem;
+                                font-family: 'Noto Serif', serif;
+                                font-weight: 400;
+                                text-transform: capitalize;
+                                border-bottom: 1px solid black;
+                                padding-bottom: 1rem;
+                                a {
+                                    font-size: .8rem;
+                                    font-weight: 300;
+                                   
+                                }
+                            }
+                        }
                     .bids-number {
-                margin-left: 1rem;
-                    }
+                                  margin-left: 1rem;
+                                }
                        .seller-info {
                            width: 100%;
                            display: flex;

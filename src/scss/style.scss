@@ -1,5 +1,6 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../../node_modules/bootstrap/scss/_navbar.scss";
+@import "../../node_modules/bootstrap/scss/_carousel.scss";
 @import "./partials/variables";
 @import "./partials/@media";
 @import "./partials/loader";
@@ -9,7 +10,9 @@
 @import "./partials/mediumSize";
 @import "./partials/home";
 @import "./partials/register";
-@import "./partials/posts";
+@import "./partials/listings";
+@import "./partials/profiles";
 @import "./partials/login";
 @import "./partials/layout";
+@import "./partials/carousel";
 

@@ -1,4 +1,4 @@
-import { API_SOCIAL_URL } from "../constants.js";
+/* import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
 //import { displayMessage } from "../../components/displayMessage.js";
 //const message = document.querySelector(".message-container"); 
@@ -14,7 +14,7 @@ export async function updateProfile(profileData) {
     if (!profileData.name) {
         alert("profile needs a name");
     }
-    const updateProfileURL = `${API_SOCIAL_URL}${action}/${profileData.name}/name`;
+    const updateProfileURL = `${API_AUCTION_URL}${action}/${profileData.name}/name`;
 
     try {
 
@@ -47,3 +47,4 @@ export async function updateProfile(profileData) {
 
 
 
+ */
