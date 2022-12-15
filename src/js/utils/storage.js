@@ -2,6 +2,7 @@ const tokenKey = "token";
 const userKey = "profile";
 const creditKey = "credit";
 
+
 export function saveToken(token) {
     saveToStorage(tokenKey, token);
 }
@@ -9,8 +10,8 @@ export function saveToken(token) {
 export function getToken() {
     return getFromStorage(tokenKey);
 }
+/*******/
 
-/********/
 
 export function saveCredit(credit) {
     saveToStorage(creditKey, credit);
@@ -53,6 +54,6 @@ export function getFromStorage(key) {
 
     return JSON.parse(value);
 }
-export function remove() {
+export function remove(key) {
     localStorage.removeItem(key);
 }

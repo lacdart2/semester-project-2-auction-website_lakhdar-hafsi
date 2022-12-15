@@ -3,15 +3,15 @@
 
 import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
-
+/* import { logOut } from "../auth/logout.js"; */
 /* import { remaining } from "../../ui/countDown.js";
 import { postDetail } from "./postDetails.js"; */
 
 
-
+/* logOut(); */
 const action = "/listings";
 
-(async function readHome() {
+/* ( */ export async function readHome() {
     const homeListingsContainer = document.querySelector(".listings-container-preview");
     const allListingsCount = document.querySelector(".listings-count");
 
@@ -99,7 +99,7 @@ const action = "/listings";
     }
 
 
-})();
+}/* )() */;
 
 
 /* 

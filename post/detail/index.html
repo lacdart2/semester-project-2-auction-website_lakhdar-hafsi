@@ -26,30 +26,28 @@
 
 </head>
 
-<body class="body-dark bg-black ">
+<body class="">
     <header>
-        <nav class="navbar navbar-expand-lg bg-black pb-lg-3">
+        <nav class="navbar navbar-expand-lg text-black pb-lg-3">
             <div class="container-fluid ">
-                <a class="navbar-brand text-white logo" href="../../index.html">Noroff Plus<i
-                        class="fa-thin fa-plus"></i></a>
+                <a class="navbar-brand logo" href="../../index.html">Noroff Plus<i class="fa-thin fa-plus"></i></a>
                 <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class=" navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page"
-                                href="/profile/home/index.html">Home</a>
+                            <a class="nav-link active" aria-current="page" href="/profile/home/index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/post/create/index.html"><i
+                            <a class="nav-link" href="/post/create/index.html"><i
                                     class="fa-light fa-plus small me-1"></i>
                                 Sell</a>
                         </li>
                         <li class="nav-item ms-5">
-                            <a class="nav-link text-white" href="./profile/register/index.html">
+                            <a class="nav-link " href="./profile/register/index.html">
                                 <div class="menu-container container-fluid bg-black col-12 col-md-12 bg-black  ">
 
                                 </div>
@@ -57,21 +55,29 @@
                         </li>
 
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    <a class="logout-btn btn btn-dark nav-link text-white me-3 p-2" href="">Logout</a>
+                    <div class="logging-status"></div>
+
                 </div>
             </div>
         </nav>
+        <!--     <div class="container hero-posts p-4 d-flex flex-column align-items-center justify-content-center gap-3 ">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search listing" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search </button>
+            </form>
+
+        </div> -->
     </header>
     <main>
-        <div class="container hero">
-            <div class="container col-12 col-md-6 login-section flex-grow-1 mt-2 text-light pt-2 mb-5">
+        <div class="container hero border d-flex flex-column justify-content-center align-items-center ">
+            <!--    <div class="container col-12 col-md-6  flex-grow-1 mt-2 text-light pt-2 mb-5 "> -->
+            <div class="container  ">
                 <div class="container d-flex flex-column justify-content-center align-items-center  ">
-                    <h2 class="col-12 col-md-12 h1  p-3  d-flex align-items-center justify-content-start page-heading">
+                    <h2
+                        class=" text-dark col-12 col-md-12 h1  p-3  d-flex align-items-center justify-content-start page-heading">
                         Listing Details </h2>
-                    <div class="col-12 col-md-12   px-3 pt-2 pb-4 border text-black ">
+                    <div class="col-12 col-md-12   px-3 pt-2 pb-4  text-black ">
                         <div class="listing-container">Loading Listing details...</div>
                         <!-- Button trigger modal in js -->
 

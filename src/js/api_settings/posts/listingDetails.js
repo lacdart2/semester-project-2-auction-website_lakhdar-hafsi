@@ -33,7 +33,7 @@ export async function listingDetail() {
         const response = await fetchToken(getListingsURL);
         console.log(response);
         const json = await response.json();
-        console.log(json.description);
+        console.log(json);
 
         console.log(json.created.toLocaleString())
         const test = json.created.toLocaleString();
@@ -45,10 +45,11 @@ export async function listingDetail() {
         console.log(bidsCounter);
         console.log(created);
 
-        // last highest last bid :
+        // last highest  bid :
         const bidsArray = json.bids;
 
         // last highest bid amount :
+
         const lastBid = bidsArray.slice(-1);
         const lastBidAmount = lastBid[0].amount;
 
@@ -183,25 +184,26 @@ export async function listingDetail() {
                                                     <h5 class="card-title">${json.title}</h5>
                     
                                                     <div class="card-details p-2">
-                                                        <p class="fs-6 text-left text-dark">
+                                                        <p class="description fs-6 text-left text-dark">
                                                            ${json.description}
                                                         </p>
-                                                        <div class="listing-info p-3 ps-0">
-                                                            <div class="  d-flex flex-row  align-items-center justify-content-center gap-5  listing-row p-3">
-                                                                <div class="listing-image">
-                                                                    <img src="${json.media}" class="img-thumbnail rounded mb-2" alt="${json.title}">
+                                                        <div class="listing-info p-2  ms-0 ps-0">
+                                                            <div class=" d-flex flex-row  align-items-center justify-content-between gap-2  listing-row p-3">
+                                                                <div class="listing-image me-3 ">
+                                                                    <img src="${json.media[0]}" class="img-thumbnail rounded mb-2 " alt="${json.title}">
                                                                 </div>
-                                                                <div class="listing-update text-dark d-flex flex-column">
+                                                                <div class="listing-update text-dark d-flex flex-column col-lg-06 col-06 ">
                                                                     <p class="">Total Bids :
                                                                             <a href="/" class="btn btn-light">
                                                                                 ${bidsCounter}
                                                                             </a>
                                                                     </p>
                                                                     <p class="">current bid :
-                                                                        <a href="/" class="btn btn-light ">
+                                                                       <a href="/" class="btn btn-light ">
                                                                             ${lastBidAmount} <i class="fa-solid fa-coins px-2"></i> 
                                                                         </a>
                                                                     </p>
+                                                                    
                                                                     
                                                                     <p class="">Last Bider : 
                                                                         <a href="/" class="btn btn-light ">
@@ -213,7 +215,7 @@ export async function listingDetail() {
                                                               
                                                          <div class="seller-info d-flex flex-row  align-items-center justify-content-between my-2">                                                        
                                                                    
-                                                                   <a href="/post/edit/index.html" class="btn btn-primary btn-danger">
+                                                                   <a href="/post/edit/index.html" class="btn border-bottom p-2 ">
                                                                         @ ${json.seller.name} <img class="profile-avatar" 
                                                                         src="${json.seller.avatar}"/>
                                                                     </a>
@@ -271,7 +273,10 @@ export async function listingDetail() {
                                             </div>
                                         </div>
                                  </a> `
-
+        const imageAvatar = document.querySelectorAll(".profile-avatar");
+        if (!json.seller.avatar) {
+            imageAvatar.style.visibility = "hidden";
+        }
         auctionStatus(json.created, json.endsAt);
         displayBids();
         remaining(json);

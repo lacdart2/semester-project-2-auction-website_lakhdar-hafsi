@@ -9,7 +9,7 @@ export function placeListings(post) {
     }
     console.log(popularListings);
 } */
-
+/* 
 export function setupSearch(posts, container) {
     const searchFrom = document.querySelector("form#search")
 
@@ -50,4 +50,4 @@ function onSearch(event) {
         // function to innerhtml stuff, to render results inside a container.
 
     })
-}
+} */

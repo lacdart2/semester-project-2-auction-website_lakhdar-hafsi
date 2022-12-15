@@ -53,10 +53,12 @@
                         height: 100px;
                         overflow-y: hidden;
                         
-                        p {
-                            max-height: 100px;
-            
-                        }
+                        .desc {
+                                max-height: 100px;
+                                font-weight: 1rem;
+                                color: red;
+                        
+                            }
             
                         .small {
                             margin-top: auto;
@@ -81,10 +83,12 @@
 
                 }
         }
-      
+       
 }
+
 .card-heading {
-max-width: 70%;
+/* max-width: 70%; */
+text-align: left;
 
 .seller-info {
     width: 100%;
@@ -99,6 +103,7 @@ a {
         width: 50px;
         height: 30px;
         border-radius: 5px;
+       
     }
 }
 }
@@ -124,9 +129,41 @@ a {
     height: 200px;
     margin-bottom: 1rem;
     overflow-y: hidden;
+    position: relative;
 
-  
+  /* .img-counter {
+    color: #fefefe;
+    padding: 1rem;
+    font-size: 1rem;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 10%;
+    right:10%;
+  } */
+.dots {
+    width: 30%;
+    height: 20px;
+    background: rgba(0, 0, 0, .5);
+  border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    left:50%;
+    transform: translate(-50%, -10%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:.5rem;
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #fff;
 
+    }
+}
 
     img {
 
@@ -155,11 +192,22 @@ a {
                     margin-bottom: 1rem;
                         
                     .listing-update {
+                       border-left: 2px solid #414040;
+                        padding:1rem 2rem;
                             p {
                                 color: #414040;
                                 width: 100%;
                                 font-size: 1rem;
                                 font-family: 'Noto Serif', serif;
+                                font-weight: 400;
+                                text-transform: capitalize;
+                                border-bottom: 1px solid black;
+                                padding-bottom: 1rem;
+                                a {
+                                    font-size: .8rem;
+                                    font-weight: 300;
+                                   
+                                }
                             }
                         }
                     .bids-number {
