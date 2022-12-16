@@ -2,9 +2,10 @@ import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
 import { remaining } from "../../ui/countDown.js";
 import *  as storage from "../../utils/storage.js";
+/* import * as ui from "../../ui/detailCarousel.js"; */
 /* import { createBid } from "../bids/placeBid.js"; */
 import { displayMessage } from "../../components/displayMessage.js";
-const messageContainer = document.querySelector(".message-container")
+/* const messageContainer = document.querySelector(".message-container") */
 
 
 const action = "/listings";
@@ -188,24 +189,28 @@ export async function listingDetail() {
                                                            ${json.description}
                                                         </p>
                                                         <div class="listing-info p-2  ms-0 ps-0">
-                                                            <div class=" d-flex flex-row  align-items-center justify-content-between gap-2  listing-row p-3">
-                                                                <div class="listing-image me-3 ">
-                                                                    <img src="${json.media[0]}" class="img-thumbnail rounded mb-2 " alt="${json.title}">
-                                                                </div>
+                                                            <div class=" d-flex flex-row  align-items-center justify-content-between listing-row p-3 ps-0">
+                                                                <div class="listing-image d-flex flex-column align-items-center justify-content-start">
+                                                                    <a target="_blank"><img src="${json.media[0]}" class="album-img img-fluid rounded mb-2" alt="${json.title}"></a>
+                                                                    <a target="_blank"><img src="${json.media[1]}" class="album-img img-fluid rounded " alt="${json.title}"></a>
+                                                                 </div> 
+
+
+                                                                      
                                                                 <div class="listing-update text-dark d-flex flex-column col-lg-06 col-06 ">
-                                                                    <p class="">Total Bids :
+                                                                    <p class="bids-info">Total Bids :
                                                                             <a href="/" class="btn btn-light">
                                                                                 ${bidsCounter}
                                                                             </a>
                                                                     </p>
-                                                                    <p class="">current bid :
+                                                                    <p class="bids-info">current bid :
                                                                        <a href="/" class="btn btn-light ">
                                                                             ${lastBidAmount} <i class="fa-solid fa-coins px-2"></i> 
                                                                         </a>
                                                                     </p>
                                                                     
                                                                     
-                                                                    <p class="">Last Bider : 
+                                                                    <p class="bids-info">Last Bider : 
                                                                         <a href="/" class="btn btn-light ">
                                                                             @ ${lastBider} 
                                                                         </a>
@@ -215,7 +220,7 @@ export async function listingDetail() {
                                                               
                                                          <div class="seller-info d-flex flex-row  align-items-center justify-content-between my-2">                                                        
                                                                    
-                                                                   <a href="/post/edit/index.html" class="btn border-bottom p-2 ">
+                                                                   <a href="/post/edit/index.html" class="btn btn-seller p-2 ">
                                                                         @ ${json.seller.name} <img class="profile-avatar" 
                                                                         src="${json.seller.avatar}"/>
                                                                     </a>
@@ -273,6 +278,7 @@ export async function listingDetail() {
                                             </div>
                                         </div>
                                  </a> `
+
         const imageAvatar = document.querySelectorAll(".profile-avatar");
         if (!json.seller.avatar) {
             imageAvatar.style.visibility = "hidden";
@@ -291,7 +297,24 @@ export async function listingDetail() {
 
 };
 
+{/* <div class="listing-image row col-12">
+    <img src="${json.media[0]}" class="rounded mb-2" alt="${json.title}">
+        <img src="${json.media[1]}" class="img-thumbnail rounded" alt="${json.title}">
+        </div> 
+    
+    
+<div id="carousel">        
+    <div class="carousel-wrapper">
+            <img src="${json.media[0]}" alt="${json.title}">
+          <img src="${json.media[1]}" alt="${json.title}">
+      </div>
+</div>
 
+    
+    
+    
+    
+    */}
 /* 
 const bidBtn = document.querySelector(".bid-btn");
 const bidInput = document.querySelector(".bid-input");

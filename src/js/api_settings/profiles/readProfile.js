@@ -1,6 +1,7 @@
 
 import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
+import { displayMessage } from "../../components/displayMessage.js";
 
 
 
@@ -20,8 +21,8 @@ const method = "GET";
 const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString);
-const name = params.get("name");
-const getProfileURL = `${API_AUCTION_URL}${action}/${name}?_listings=true`;
+const profileName = params.get("name");
+const getProfileURL = `${API_AUCTION_URL}${action}/${profileName}/bids?_listings=true?_active=true`;
 console.log(getProfileURL);
 /* export async function updateProfile() {
  
@@ -40,14 +41,14 @@ console.log(getProfileURL);
 
 
 
-export async function getProfile(name) {
+export async function getProfile(profileName) {
 
 
 
-    /*    if (!name) {
-           throw new Error("you need a profile name ");
-       } */
-
+    /*     if (!name) {
+            throw new Error("you need a profile name ");
+        }
+     */
     const options = {
         method: method,
         headers: {
@@ -57,68 +58,26 @@ export async function getProfile(name) {
     }
 
 
-    /*    try { */
+    try {
 
 
-    const response = await fetchToken(getProfileURL, options);
+        const response = await fetchToken(getProfileURL, options);
 
-    const json = await response.json();
-    console.log(json);
+        const json = await response.json();
+        console.log(json);
 
+        /* ?_listings = true */
 
+        const profileContainer = document.querySelector(".profile-container");
+        profileContainer.innerHTML = "";
+        profileContainer.innerHTML = `
 
+          
+                       `
 
+    } catch (error) {
+        console.log(error);
+        displayMessage("warning", "", error, "", ".message-container");
+    }
 
-
-
-
-    /*   } catch (error) {
-          console.log(error);
-      } */
-}
-
-/* ?_listings = true */
-/* 
-
-profileContainer.innerHTML = `
-
-                <a class="listing profile listing-details" href = "/">
-                          <div class="card profile-card">
-                              <div class="card-body text-start overflow-hidden d-flex flex-column align-items-left">
-                                  <div class="card-top d-flex flex-column align-items-left">
-                                        <div class="card-heading">
-                                            <h5 class="card-title">${json.name}</h5>
-                                        </div>
-                                        <div class="card-details">
-                                            <small class="text-dark py-3">
-                                                <i class="fa-solid fa-envelope mb-3 "></i>
-                                                ${json.email}
-                                            </small>
-                                        </div>
-                                      </div>
-                                      <div class="card-bottom">
-                                       <div class="listing-image profile-img">
-                                           <img src="${json.avatar}" class="img-fluid rounded" alt="${json.title}">
-                                        </div>
-                                         <div class="seller-info">
-                                             <small>
-                                                    <i class="fa-solid fa-trophy"></i>
-                                                    ${json.wins.length}
-                                             </small>
-         
-                                             <p class="pe-2 border-bottom pb-2">listings: ${json._count.listings}</p>
-
-                                             <p> <i class="fa-solid fa-coins pe-2"></i>${json.credits}</p>
-                                            </div>  
-                                       </div>
-                                  </div>
-                                   <button type="button" class="btn btn-primary " 
-                                        
-                                     
-                                           Read More 
-                                    </button>
-                               
-                              </div>
-                          </div>
-                       <a/> `
- */
+};

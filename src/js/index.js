@@ -4,6 +4,7 @@ import createMenu from "./components/createMenu.js";
 import * as apiCalls from "./api_settings/posts/index.js";
 
 import * as triggers from "./handlers/index.js";
+/* import * as ui from "./ui/index.js"; */
 
 import * as profileCalls from "./api_settings/profiles/index.js"
 import * as auth from "./api_settings/auth/index.js";
@@ -27,12 +28,17 @@ if (path === "/profile/home/index.html") {
     createMenu();
     /* auth.logoutListener(); */
     /*     } */
-
-
-
     apiCalls.readHome();
 
-}/* else if (path === "/profile/edit/index.html") {
+}
+// landing- page 
+else if (path === "/index.html") {
+
+    /*   triggers.setUpdateProfileListener(); */
+    apiCalls.read()
+    createMenu();
+}
+/* else if (path === "/profile/edit/index.html") {
 
     triggers.setUpdateProfileListener();
     profileCalls.updateProfile();
@@ -84,14 +90,15 @@ else if (path === "/posts/index.html") {
 else if (path === "/post/create/index.html") {
     createMenu();
     /*  triggers.setCreateListingFormListener() */
-    apiCalls.createListingForm()
-    /*   apiCalls.createListing(); */
+    apiCalls.createListingForm();
+    apiCalls.createListing();
 
 
     // listing - Details 
 } else if (path === "/post/detail/index.html") {
     createMenu();
     apiCalls.listingDetail();
+    /*     ui.setIntervalDetailCarousel(); */
 
     // listing - Edit 
 } else if (path === "/post/edit/index.html") {
