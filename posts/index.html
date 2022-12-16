@@ -20,9 +20,9 @@
 
 <body class="body-dark ">
     <header>
-        <nav class="navbar  navbar-expand-lg bg-dark pb-lg-3">
+        <nav class="navbar  navbar-expand-lg bg-dark pb-lg-3  border-bottom">
             <div class="container-fluid ">
-                <a class="navbar-brand text-white logo" href="../index.html">Noroff Plus<i
+                <a class="navbar-brand text-white logo  me-5" href="../index.html">Noroff Plus<i
                         class="fa-thin fa-plus"></i></a>
                 <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -32,31 +32,33 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page"
-                                href="../profile/home/index.html">Home</a>
+                            <a class="nav-link active link-success text-white  me-3" aria-current="page"
+                                href="/index.html">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../post/create/index.html"><i
-                                    class="fa-light fa-plus small me-1"></i>Sell
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="../profiles/index.html"><i
-                                    class="fa-light fa-plus small me-1"></i>
+                            <a class="nav-link text-white link-success me-3" href="../profiles/index.html">
                                 Profiles
                             </a>
                         </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-success  me-3" href="/posts/index.html">Listings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white link-success me-3" href="../post/create/index.html"><i
+                                    class="fa-light fa-plus small me-1"></i>Sell
+                            </a>
+                        </li>
                         <li class="nav-item ms-5 menu-section">
-                            <a class="nav-link text-white" href="./profile/register/index.html">
+                            <a class="nav-link text-white link-success me-3" href="./profile/register/index.html">
                                 <div class="menu-container container-fluid  col-12 col-md-12 bg-dark ">
 
                                 </div>
                             </a>
                         </li>
-
-
                     </ul>
-                    <a class="logout-btn btn btn-dark nav-link text-white me-3 p-2" href="">Logout</a>
+                    <a class="logout-btn btn btn-dark nav-link text-white me-3 p-2 " href="">Logout</a>
                     <div class="logging-status"></div>
                 </div>
 
@@ -77,7 +79,33 @@
                     class="posts-heading  container col-12 col-md-6  mt-5  text-white d-flex align-items-start justify-content-start  mt-4 border">
                     <h2 class="h1 ps-3">Posts</h2>
                 </div> -->
-                <div class="listings-container col-12 col-md-10 mt-lg-5 mt-5">
+                <!--  recent added items  -->
+                <h2
+                    class=" text-black col-12 col-md-12 h1  p-3  d-flex align-items-center justify-content-start page-heading">
+                    Recent Added Listings</h2>
+                <div
+                    class="recent-added  col-12 col-md-10 mt-lg-5 mt-5 text-dark d-flex flex-wrap justify-content-center align-items-start gap-2">
+                    <div class="loader-container">
+                        <div class="loader">
+                        </div>
+                    </div>
+                </div>
+                <!--  most wanted listings  -->
+                <h2
+                    class=" text-black col-12 col-md-12 h1  p-3  d-flex align-items-center justify-content-start page-heading">
+                    Most Wanted Listings </h2>
+                <div
+                    class="most-wanted  col-12 col-md-10 mt-lg-5 mt-5 text-dark d-flex flex-wrap justify-content-center align-items-start gap-2">
+                    <div class="loader-container">
+                        <div class="loader">
+                        </div>
+                    </div>
+                </div>
+                <h2
+                    class=" text-black col-12 col-md-12 h1  p-3  d-flex align-items-center justify-content-start page-heading">
+                    All Active Listings </h2>
+                <div
+                    class="listings-container col-12 col-md-10 mt-lg-5 mt-5 text-dark d-flex flex-wrap justify-content-center align-items-start gap-2">
                     <div class="loader-container">
                         <div class="loader">
                         </div>

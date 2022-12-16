@@ -22,8 +22,8 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-black pb-lg-3">
             <div class="container-fluid ">
-                <a class="navbar-brand text-white logo" href="../../index.html"><i class="fa-thin fa-plus"></i>BID<i
-                        class="p-1">it</i>ALL</a>
+                <a class="navbar-brand text-white logo  me-5" href="../../index.html"><i
+                        class="fa-thin fa-plus"></i>BID<i class="p-1">it</i>ALL</a>
                 <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -32,20 +32,32 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page"
-                                href="/profile/home/index.html">Home</a>
+                            <a class="nav-link active link-success text-white  me-3" aria-current="page"
+                                href="/index.html">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/posts/index.html">Listings</a>
+                            <a class="nav-link  text-white link-success me-3" href="../../profiles/index.html">
+                                Profiles
+                            </a>
                         </li>
-                        <li class="nav-item ms-5">
-                            <a class="nav-link text-white" href="./profile/register/index.html">
-                                <div class="menu-container container-fluid bg-black col-12 col-md-12 bg-black  ">
+                        <li class="nav-item active">
+                            <a class="nav-link text-white link-success me-3" href="/posts/index.html">Listings
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-success  me-3" href="#"><i
+                                    class="fa-light fa-plus small me-1"></i>Sell
+                            </a>
+                        </li>
+                        <li class="nav-item ms-5 menu-section">
+                            <a class="nav-link text-white  me-3" href="./profile/register/index.html">
+                                <div class="menu-container container-fluid  col-12 col-md-12 bg-dark ">
 
                                 </div>
                             </a>
                         </li>
-
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -94,7 +106,7 @@
                                     <div class="modal-body bids-content border-0 p-2">
 
                                         <form id="createListingForm"
-                                            class="createListingForm border p-2 px-3 text-dark">
+                                            class="createListingForm border p-3 px-3 text-dark">
                                             <div class="form-group mb-3">
                                                 <label for="name">Title</label>
                                                 <input class="form-control title" type="text" id="title" name="title"
@@ -110,10 +122,7 @@
                                                 <label for="tags">Tags</label>
                                                 <input class="form-control tags" type="text" name="tags">
                                             </div>
-                                            <!--  <div class="form-group mb-3">
-                                                                        <label for="avatar">Avatar</label>
-                                                                        <input class="form-control" type="url" name="avatar">
-                                                                    </div> -->
+
 
                                             <div class="mb-3">
                                                 <label for="formFileSm" class="form-label">Image URL</label>
@@ -129,23 +138,15 @@
                                                     <span class="input-group-text">.00</span>
                                                 </div>
                                             </div>
-                                            <!--    <div class="form-group mb-3">
-                                                                        <label for="image">Media</label>
-                                                                        <input class="form-control" type="url" name="media">
-                                                                    </div> -->
+
                                             <div class="form-group mb-3">
                                                 <label for="tags">End Date</label>
                                                 <input class="form-control bidEndDate" type="date" name="date">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="tags">I accept terms and conditions as a Seller</label>
-
-
                                                 <input class="form-check-input " type="checkbox" value=""
                                                     aria-label="Checkbox for following text input" required>
-
-                                                <!--      <input type="text" class="form-control"
-                                                                                aria-label="Text input with checkbox"> -->
 
                                             </div>
                                             <button type="submit" class="btn btn-success submitBtn">Submit</button>

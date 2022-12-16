@@ -11671,7 +11671,7 @@ writing-mode: vertical-rl;
   margin-left: auto;
 }
 
-.listings-container {
+.listings-container, .most-wanted, .recent-added {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11679,20 +11679,20 @@ writing-mode: vertical-rl;
   gap: 0.1rem;
   height: 90%;
   min-width: 96%;
-  padding-bottom: 5rem;
-  margin-top: 5rem;
+  /*   padding-bottom: 5rem; */
+  /*  margin-top:5rem; */
 }
-.listings-container .listing {
-  padding: 0.5rem;
+.listings-container .listing, .most-wanted .listing, .recent-added .listing {
+  padding: 0;
   border-radius: 0.2rem;
   text-transform: capitalize;
   font-size: smaller;
   font-weight: 100;
   padding-top: 0;
 }
-.listings-container .listing .card {
+.listings-container .listing .card, .most-wanted .listing .card, .recent-added .listing .card {
   width: 200px;
-  height: 400px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11702,33 +11702,41 @@ writing-mode: vertical-rl;
   font-family: "Noto Serif", serif;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
-.listings-container .listing .card .card-body {
+.listings-container .listing .card .card-body, .most-wanted .listing .card .card-body, .recent-added .listing .card .card-body {
   overflow-y: hidden;
-  background-color: #a6b3f5;
+  background-color: #0d29b6;
 }
-.listings-container .listing .card .card-body .card-top .btn-primary {
+.listings-container .listing .card .card-body .card-top .btn-primary, .most-wanted .listing .card .card-body .card-top .btn-primary, .recent-added .listing .card .card-body .card-top .btn-primary {
   margin-top: auto;
   margin-bottom: 0;
 }
-.listings-container .listing .card .card-body .card-top .card-details {
+.listings-container .listing .card .card-body .card-top .card-details, .most-wanted .listing .card .card-body .card-top .card-details, .recent-added .listing .card .card-body .card-top .card-details {
   height: 100px;
   overflow-y: hidden;
 }
-.listings-container .listing .card .card-body .card-top .card-details .desc {
-  max-height: 100px;
-  font-weight: 1rem;
-  color: red;
-}
-.listings-container .listing .card .card-body .card-top .card-details .small {
+.listings-container .listing .card .card-body .card-top .card-details .small, .most-wanted .listing .card .card-body .card-top .card-details .small, .recent-added .listing .card .card-body .card-top .card-details .small {
   margin-top: auto;
   margin-bottom: 1rem;
 }
-.listings-container .listing .card .card-body .card-top .card-details .fa-solid {
+.listings-container .listing .card .card-body .card-top .card-details .fa-solid, .most-wanted .listing .card .card-body .card-top .card-details .fa-solid, .recent-added .listing .card .card-body .card-top .card-details .fa-solid {
   color: #989898;
   padding-right: 0.5rem;
 }
-.listings-container .listing .card .card-body .card-top .card-details .fa-pen {
+.listings-container .listing .card .card-body .card-top .card-details .fa-pen, .most-wanted .listing .card .card-body .card-top .card-details .fa-pen, .recent-added .listing .card .card-body .card-top .card-details .fa-pen {
   font-size: 0.8rem;
+}
+.listings-container .listing-card, .most-wanted .listing-card, .recent-added .listing-card {
+  padding: 1rem;
+  width: 220px;
+  max-width: 230px;
+  border-radius: 5px;
+  transition: 0.4s;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.listings-container .listing-card:hover, .most-wanted .listing-card:hover, .recent-added .listing-card:hover {
+  transform: scale(1.02);
+  transform-origin: center;
+  background-color: rgba(143, 137, 137, 0.5);
 }
 
 .card-heading {
@@ -11767,18 +11775,6 @@ writing-mode: vertical-rl;
   margin-bottom: 1rem;
   overflow-y: hidden;
   position: relative;
-  /* .img-counter {
-    color: #fefefe;
-    padding: 1rem;
-    font-size: 1rem;
-    background: #000;
-    border-radius: 50%;
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    bottom: 10%;
-    right:10%;
-  } */
 }
 .listing-image .dots {
   width: 30%;
@@ -11800,21 +11796,42 @@ writing-mode: vertical-rl;
   border-radius: 50%;
   background-color: #fff;
 }
+.listing-image .dots .dot:nth-of-type(2) {
+  background: rgb(224, 224, 224);
+}
 .listing-image img {
   min-width: 100%;
   min-height: 100%;
+  /*     width: 40%;
+      height: 50%; */
   object-fit: cover;
 }
 
 .card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 0.7rem;
+  max-width: 80%;
+  line-height: 0.8rem;
+  height: 50px;
+  position: relative;
   text-transform: uppercase;
-  font-family: "Fjalla One", sans-serif;
+  border-bottom: 2px solid #777777;
 }
 
 .card-details .listing-info {
   margin-bottom: 1rem;
+}
+.card-details .listing-info .listing-image {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  margin-right: auto;
+  margin-left: 0;
+  outline: 2px solid red;
+  width: 60%;
+}
+.card-details .listing-info .listing-image .album-img {
+  flex: 1;
+  outline: 2px solid red;
 }
 .card-details .listing-info .listing-update {
   border-left: 2px solid #414040;
@@ -11842,22 +11859,26 @@ writing-mode: vertical-rl;
   display: flex;
   align-items: center;
   justify-content: left;
+  padding-right: 4rem;
   /* .avatar {
-   .btn-avatar {
-        width: 50px;
-   height: 43px;
-   margin-left: .6rem;
-   padding-bottom: 0;
-       .seller-avatar {
-       width: 100%;
-       height: 100%;
-       object-fit: cover;
-       border-radius: 50%;
-   } 
-   }
+                  .btn-avatar {
+                       width: 50px;
+                  height: 43px;
+                  margin-left: .6rem;
+                  padding-bottom: 0;
+                      .seller-avatar {
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
+                      border-radius: 50%;
+                  } 
+                  }
 
 
-  } */
+                 } */
+}
+.card-details .listing-info .seller-info .btn-seller {
+  border: 1px solid #414040;
 }
 .card-details .listing-info .seller-info .profile-avatar {
   width: 50px;
@@ -11879,6 +11900,102 @@ writing-mode: vertical-rl;
   min-width: 100%;
 }
 
+.carousel {
+  width: 100vw;
+  min-height: 50vh;
+  font-family: "Fjalla One", sans-serif;
+}
+.carousel .carousel-inner {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.carousel .carousel-inner .carousel-item {
+  min-width: 100%;
+  min-height: 100%;
+}
+.carousel .carousel-inner .active-profiles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  gap: 2rem;
+}
+.carousel .carousel-inner .active-profiles .card {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  border: 2px solid #c2c0c0;
+  border-radius: 50%;
+  /*   display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+.carousel .carousel-inner .active-profiles .card .card-body {
+  color: #fefefe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-transform: uppercase;
+}
+.carousel .carousel-inner .active-profiles .card .card-body h5, .carousel .carousel-inner .active-profiles .card .card-body .h5 {
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+  /*  position: absolute;
+   top: 10%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 1; */
+}
+.carousel .carousel-inner .active-profiles .card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(36, 36, 36, 0.4);
+  border-radius: 50%;
+}
+.carousel .carousel-inner .active-profiles .card .slider-avatar {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.carousel .carousel-control-prev {
+  color: #000;
+}
+.carousel .carousel-control-prev .carousel-control-prev-icon {
+  color: #000;
+}
+
+/* #carousel {
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+
+
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s;
+
+    img {
+            width: 100%;
+            height: 100%;
+        }
+}
+
+
+} */
 .login-section {
   min-height: 70vh;
   display: flex;
@@ -11977,84 +12094,6 @@ writing-mode: vertical-rl;
 }
 .logout-btn.logged-in [data-visible=loggedOut] {
   display: none;
-}
-
-.carousel {
-  width: 100vw;
-  min-height: 50vh;
-  font-family: "Fjalla One", sans-serif;
-}
-.carousel .carousel-inner {
-  height: auto;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-.carousel .carousel-inner .carousel-item {
-  min-width: 100%;
-  min-height: 100%;
-}
-.carousel .carousel-inner .active-profiles {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-  gap: 2rem;
-}
-.carousel .carousel-inner .active-profiles .card {
-  width: 150px;
-  height: 150px;
-  position: relative;
-  border: 2px solid #c2c0c0;
-  border-radius: 50%;
-  /*   display: flex;
-    align-items: center;
-    justify-content: center; */
-}
-.carousel .carousel-inner .active-profiles .card .card-body {
-  color: #fefefe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  text-transform: uppercase;
-}
-.carousel .carousel-inner .active-profiles .card .card-body h5, .carousel .carousel-inner .active-profiles .card .card-body .h5 {
-  letter-spacing: 0.1rem;
-  font-size: 0.8rem;
-  /*  position: absolute;
-   top: 10%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   z-index: 1; */
-}
-.carousel .carousel-inner .active-profiles .card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(36, 36, 36, 0.4);
-  border-radius: 50%;
-}
-.carousel .carousel-inner .active-profiles .card .slider-avatar {
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-.carousel .carousel-control-prev {
-  color: #000;
-}
-.carousel .carousel-control-prev .carousel-control-prev-icon {
-  color: #000;
 }
 
 /*# sourceMappingURL=style.css.map */

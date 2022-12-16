@@ -1,6 +1,4 @@
 
-import { read } from "../api_settings/posts/read.js";
-
 const event = new Date();
 
 export function remaining(latestJson) {

@@ -12,7 +12,7 @@ const method = "POST";
 window.onload = function () {
 
 
-    const newListingFrom = document.querySelector(".modal#createListingForm");
+    const newListingFrom = document.querySelector(".createListingForm");
     const title = document.querySelector(".title");
     const startPrice = document.querySelector(".price");
     const description = document.querySelector(".description");
@@ -22,12 +22,12 @@ window.onload = function () {
     const message = document.querySelector(".message-container");
 
 
-    if (newListingFrom) {
+    /*     if (newListingFrom) { */
 
 
-        newListingFrom.addEventListener("submit", createListingForm);
+    newListingFrom.addEventListener("submit", createListingForm);
 
-    }
+    /*   } */
     function createListingForm(event) {
         event.preventDefault();
 
@@ -40,7 +40,6 @@ window.onload = function () {
         const tagsValue = tags.value.trim();
         const imageValue = image.value;
         const tagsArray = tagsValue.split(",");
-
         const imageUrlArray = imageValue.split(",");
 
         /*  const imageArray = imageUrlArray.push()[0]; */
@@ -65,7 +64,7 @@ window.onload = function () {
     // END collect data from form 
     // async function :
     async function createListing(title, startPrice, description, endDate, tags, image) {
-        /* const url = baseUrl + "products"; */
+
         const createListingURL = API_AUCTION_URL + action;
 
         const data = JSON.stringify({
