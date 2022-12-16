@@ -43,7 +43,6 @@
 }
 
 
-
 .menu{
     display: flex;
     align-items: center;
@@ -53,9 +52,11 @@
          text-decoration: none;
     color: #333;
     padding-right: 1rem; 
+    
     &.active {
-          color: $green;
-    }
+            color: $green;
+        }
+ 
     }
   .creditMenu {
     margin-left: 1rem;
