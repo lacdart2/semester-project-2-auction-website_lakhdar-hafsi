@@ -18,15 +18,13 @@
 
 </head>
 
-<body class="body-dark bg-black ">
+<body class=" ">
     <header>
-        <nav class="navbar navbar-expand-lg bg-black pb-lg-3 border-bottom">
+        <nav class="navbar bg-black navbar-expand-lg pb-lg-3 border-bottom">
             <div class="container-fluid ">
-                <a class="navbar-brand text-white logo" href="../../index.html">Noroff Plus<i
+                <a class="navbar-brand text-white logo me-5" href="../../index.html">Noroff Plus<i
                         class="fa-thin fa-plus"></i></a>
-                <li class="nav-item">
-                    <a class="nav-link mx-4 pb-1 active text-white loggedIn" aria-current="page" href="#"></a>
-                </li>
+
                 <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -35,27 +33,31 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-success " href="/">
-                                Home</a>
+                            <a class="nav-link active text-success  me-3" aria-current="page"
+                                href="/index.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white link-success me-3" href="../../profiles/index.html">
+                                Profiles
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link text-white link-success me-3" href="/posts/index.html">Listings
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-white" aria-current="page" href="../../posts/index.html">
-                                <i class="fa-solid fa-pen small me-1"></i>Listings</a>
+                            <a class="nav-link text-white link-success me-3" href="../post/create/index.html"><i
+                                    class="fa-light fa-plus small me-1"></i>Sell
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/post/create/index.html"><i
-                                    class="fa-light fa-plus small me-1"></i>
-                                Sell</a>
-                        </li>
-                        <li class="nav-item ms-5">
-                            <a class="nav-link text-white" href="#">
-                                <div class="menu-container container-fluid bg-black col-12 col-md-12 bg-black  ">
+                        <li class="nav-item ms-5 menu-section">
+                            <a class="nav-link text-white  link-success me-3" href="./profile/register/index.html">
+                                <div class="menu-container container-fluid  col-12 col-md-12 bg-dark ">
 
                                 </div>
                             </a>
                         </li>
-
-
                     </ul>
                     <!--  <button type="button" class="loginBtn btn btn-outline-success me-2" data-bs-toggle="modal"
                         data-bs-target="#loginModal" data-auth="login" data-visible="loggedOut">
@@ -85,7 +87,9 @@
                 <div class="home-listings-listings container d-flex row">
                     <div
                         class="container hero-listings p-4 d-flex flex-column align-items-center justify-content-center gap-3 ">
-                        <div class="latest-listings pt-0 ">
+                        <!--  <div class="latest-listings pt-0 "> -->
+                        <div
+                            class="listings-container col-12 col-md-10 mt-lg-5 mt-5 text-dark d-flex flex-wrap justify-content-center align-items-start gap-2">
                             <h3>Latest listings </h3>
                             <div
                                 class="listings-container-preview text-black d-flex flex-row align-items-center justify-content-around ">
