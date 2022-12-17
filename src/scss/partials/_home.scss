@@ -28,6 +28,33 @@ body {
     background-blend-mode: hue;
     background-position: center;
     overflow: hidden;
+
+
+    .page-heading {
+    font-family: 'Fjalla One', sans-serif;
+    position: relative;
+       
+    &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 15%;
+    width: 50%;
+    height: 2px;
+    background-color: $bg-grey;
+    z-index: -1;
+       }
+                   &::before {
+                       content: "";
+                       position: absolute;
+                       top: 50%;
+                       left: 0;
+                       width: 8px;
+                       height: 8px;
+                       border-radius: 50%;
+                       background-color: $bg-grey;
+                   }
+    }
 }
 
  .hero{
