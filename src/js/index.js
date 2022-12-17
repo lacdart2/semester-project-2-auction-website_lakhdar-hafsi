@@ -1,10 +1,11 @@
 
 import createMenu from "./components/createMenu.js";
+/* import { read } from "../js/api_settings/posts/read.js"; */
 
 import * as apiCalls from "./api_settings/posts/index.js";
 
 import * as triggers from "./handlers/index.js";
-/* import * as ui from "./ui/index.js"; */
+import * as ui from "./ui/index.js";
 
 import * as profileCalls from "./api_settings/profiles/index.js"
 import * as auth from "./api_settings/auth/index.js";
@@ -15,14 +16,20 @@ import * as auth from "./api_settings/auth/index.js";
 const path = location.pathname;
 console.log(path);
 
-let registerPath = "/profile/register/index.html";
-let loginPath = "/profile/login/index.html";
+/* let registerPath = "/profile/register/index.html";
+let loginPath = "/profile/login/index.html"; */
 
 
 
 // profile
 
-if (path === "/profile/home/index.html") {
+// landing- page 
+if (path === "/index.html") {
+
+    createMenu();
+    apiCalls.readLanding()
+
+} else if (path === "/profile/home/index.html") {
 
     /*   if (storage.profile) { */
     createMenu();
@@ -31,13 +38,7 @@ if (path === "/profile/home/index.html") {
     apiCalls.readHome();
 
 }
-// landing- page 
-else if (path === "/index.html") {
 
-    /*   triggers.setUpdateProfileListener(); */
-    apiCalls.read()
-    createMenu();
-}
 /* else if (path === "/profile/edit/index.html") {
 
     triggers.setUpdateProfileListener();
@@ -62,6 +63,7 @@ else if (path === "/profiles/index.html") {
 else if (path === "/profile/register/index.html") {
 
     triggers.setRegisterFormListener();
+    ui.offerCD();
 
 }
 // auth login
