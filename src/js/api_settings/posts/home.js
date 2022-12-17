@@ -1,6 +1,4 @@
 
-
-
 import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
 /* import { logOut } from "../auth/logout.js"; */

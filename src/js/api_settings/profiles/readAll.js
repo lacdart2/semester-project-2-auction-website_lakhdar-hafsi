@@ -49,7 +49,7 @@ export async function readAllProfiles() {
                                                       ${profile.wins.length}
                                                </small>
            
-                                               <p class="pe-2 border-bottom pb-2">listings: ${profile._count.listings}</p>
+                                               <p class="pe-2 border-bottom pb-2">Listings: ${profile._count.listings}</p>
   
                                                <p> <i class="fa-solid fa-coins pe-2"></i>${profile.credits}</p>
                                               </div>  

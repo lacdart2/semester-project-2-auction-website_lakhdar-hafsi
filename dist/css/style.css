@@ -11583,6 +11583,10 @@ li.menu-section {
     min-width: 40%;
     flex-basis: 1;
   }
+  #registerForm {
+    min-width: 70vw;
+    border-top: 1px solid rgba(143, 137, 137, 0.5);
+  }
 }
 a {
   text-decoration: none;
@@ -11613,6 +11617,30 @@ body {
   background-position: center;
   overflow: hidden;
 }
+.listings-page .page-heading, .hero .page-heading {
+  font-family: "Fjalla One", sans-serif;
+  position: relative;
+}
+.listings-page .page-heading::after, .hero .page-heading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  width: 50%;
+  height: 2px;
+  background-color: rgba(143, 137, 137, 0.5);
+  z-index: -1;
+}
+.listings-page .page-heading::before, .hero .page-heading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(143, 137, 137, 0.5);
+}
 
 .hero {
   min-height: 100vh;
@@ -11635,7 +11663,7 @@ body {
   font-size: 2rem;
   width: 70%;
   text-transform: capitalize;
-  color: #fefefe;
+  color: #ede5e5;
 }
 
 .fixed-bottom {
@@ -11701,6 +11729,7 @@ writing-mode: vertical-rl;
   flex-basis: 25%;
   font-family: "Noto Serif", serif;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  outline: 2px solid red;
 }
 .listings-container .listing .card .card-body, .most-wanted .listing .card .card-body, .recent-added .listing .card .card-body {
   overflow-y: hidden;
@@ -11713,14 +11742,18 @@ writing-mode: vertical-rl;
 .listings-container .listing .card .card-body .card-top .card-details, .most-wanted .listing .card .card-body .card-top .card-details, .recent-added .listing .card .card-body .card-top .card-details {
   height: 100px;
   overflow-y: hidden;
+  color: #ede5e5;
 }
-.listings-container .listing .card .card-body .card-top .card-details .small, .most-wanted .listing .card .card-body .card-top .card-details .small, .recent-added .listing .card .card-body .card-top .card-details .small {
+.listings-container .listing .card .card-body .card-top .card-details small, .listings-container .listing .card .card-body .card-top .card-details .small, .most-wanted .listing .card .card-body .card-top .card-details small, .most-wanted .listing .card .card-body .card-top .card-details .small, .recent-added .listing .card .card-body .card-top .card-details small, .recent-added .listing .card .card-body .card-top .card-details .small {
   margin-top: auto;
   margin-bottom: 1rem;
+  color: small;
+  color: #f6f6f6;
 }
 .listings-container .listing .card .card-body .card-top .card-details .fa-solid, .most-wanted .listing .card .card-body .card-top .card-details .fa-solid, .recent-added .listing .card .card-body .card-top .card-details .fa-solid {
   color: #989898;
   padding-right: 0.5rem;
+  color: #f6f6f6;
 }
 .listings-container .listing .card .card-body .card-top .card-details .fa-pen, .most-wanted .listing .card .card-body .card-top .card-details .fa-pen, .recent-added .listing .card .card-body .card-top .card-details .fa-pen {
   font-size: 0.8rem;
@@ -11732,11 +11765,16 @@ writing-mode: vertical-rl;
   border-radius: 5px;
   transition: 0.4s;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  box-shadow: rgba(215, 215, 215, 0.09) 0px 0px 0px 1px;
+  color: #f6f6f6;
 }
 .listings-container .listing-card:hover, .most-wanted .listing-card:hover, .recent-added .listing-card:hover {
   transform: scale(1.02);
   transform-origin: center;
   background-color: rgba(143, 137, 137, 0.5);
+}
+.listings-container .listing-card .btn-primary, .most-wanted .listing-card .btn-primary, .recent-added .listing-card .btn-primary {
+  background-color: #0099DD;
 }
 
 .card-heading {
@@ -11886,6 +11924,9 @@ writing-mode: vertical-rl;
   border-radius: 5px;
 }
 
+.profiles-container {
+  font-family: "Fjalla One", sans-serif;
+}
 .profiles-container .profile-card .card-body {
   display: flex;
   align-items: center;
@@ -11898,6 +11939,10 @@ writing-mode: vertical-rl;
 .profiles-container .profile-card .card-body .card-top .card-title {
   font-size: 0.8rem;
   min-width: 100%;
+}
+
+.login-body {
+  background-color: #1b1616;
 }
 
 .carousel {
@@ -11996,14 +12041,81 @@ writing-mode: vertical-rl;
 
 
 } */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1b1616;
+  color: #f6f6f6;
+}
+body input {
+  background-color: #989898;
+}
+
+header, footer {
+  font-family: "Fjalla One", sans-serif;
+}
+
 .login-section {
+  color: #1b1616;
   min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 .login-section .form-container {
-  min-width: 70%;
+  min-width: 90%;
+  box-shadow: rgba(221, 221, 221, 0.2) 0px 0px 0px 1px;
+  padding: 1.5rem;
+  border-radius: 5px;
+  transition: 0.4s;
+}
+.login-section .form-container:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+
+.register-section {
+  color: #ede5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.register-section .register-bottom {
+  color: #ede5e5;
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+  width: 90vw;
+  gap: 2rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  flex-wrap: wrap;
+  padding-bottom: 0;
+}
+.register-section .register-bottom #registerForm {
+  /*  flex-basis: 50%; */
+  padding-bottom: 0;
+}
+.register-section .register-bottom #registerForm input {
+  background-color: #989898;
+  border: 1px solid #989898;
+}
+.register-section .register-bottom .login-reminder {
+  flex: 1;
+  color: #f6f6f6;
+}
+.register-section .count-reg {
+  margin-top: 2.8rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  border-radius: 5px;
+  max-width: 70%;
+}
+.register-section .count-reg h4, .register-section .count-reg .h4, .register-section .count-reg h6, .register-section .count-reg .h6, .register-section .count-reg small, .register-section .count-reg .small {
+  color: #ede5e5;
 }
 
 .message-container {
@@ -12031,9 +12143,9 @@ writing-mode: vertical-rl;
   background: orange;
 }
 .message.success {
-  border-color: green;
-  color: white;
-  background: green;
+  border-color: #44803F;
+  color: #fefefe;
+  background: #44803F;
 }
 
 .menu {
@@ -12077,6 +12189,7 @@ writing-mode: vertical-rl;
   text-transform: uppercase;
   padding-left: 0;
   line-height: 1.5rem;
+  color: #f6f6f6;
 }
 .container p, .container a, .container span {
   font-family: "Fjalla One", sans-serif;
