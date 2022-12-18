@@ -15,7 +15,7 @@ color: $whity;
   font-family: 'Fjalla One', sans-serif;;
  }
 .login-section{
-color: $black;
+    color: $black;
     min-height: 70vh;
     display: flex;
     align-items: center;
@@ -77,8 +77,9 @@ box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
 border-radius: 5px;
 max-width: 70%;
 
-h4, h6, small {
+h2, h4, h6, small {
 color: $white;
+
 }
 }
 }
@@ -164,6 +165,7 @@ color: $white;
         padding-left:0;
         line-height: 1.5rem;
         color: $whity;
+        text-transform: capitalize;
     
     }
     p, a, span {
