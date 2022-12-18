@@ -1,6 +1,9 @@
 /* import { createListing } from "../api_settings/posts/create.js";
 
 
+
+
+
 export function setCreateListingFormListener() {
 
     const form = document.querySelector("#createListing");
@@ -29,3 +32,33 @@ export function setCreateListingFormListener() {
         })
     }
 }  */
+
+/* 
+import { createListing } from "../api_settings/posts/create.js";
+
+export function setCreateListingListener() {
+    const form = document.querySelector("#createListingForm");
+
+    if (form) {
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            const title = formData.get("title");
+            const description = formData.get("description");
+            const tags = formData.get("tags").split(", ");
+            const endsAt = new Date(formData.get("endsAt"));
+            const media = formData.get("media").split(", ");
+            const post = { title, description, tags, media, endsAt };
+            
+                        if (!media.value || media.value === [] || media.length === 0 || media.value === "") {
+                             delete post.media;
+                            alert("no media");
+                        }
+
+            createListing(post);
+        });
+    }
+} */
