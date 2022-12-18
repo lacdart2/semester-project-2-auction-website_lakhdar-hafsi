@@ -2,62 +2,120 @@
 
 
     .listing-info {
+    
         margin-bottom: 1rem;
+  
      
-     
-        .listing-image {
+     .listing-info-top {
+        display: flex ;
+        align-items: left;
+        justify-content: left;
+        padding: 2rem 1rem 1rem 0rem ;
+      
+
+#carouselExampleControls {
+    
+button {
+    .btn {
+            background-color: $black;
+        }
+}
+ .carousel-inner {
+ 
+
+
+        img {
+             width: 100%;
+              height: 100%;
+                object-fit: cover;
+                border-radius: 5px;
+                flex: 1;
+               
+            }
+   .carousel-item {
+    &.active{
+
+          
+        max-width: 400px;
+        max-height: 450px;
+  
+    overflow-y: hidden;
+    img {
+        min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+            flex: 1;
+    }
+   }
+  
+  
+    
+
+
+   }
+ }
+ 
+}
+        .carousel {
+          
+            width: 400px;
+            height: 400px;
+        }
+          .listing-image {
            
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+    
+     }
+  .listing-update {
+
+    background-color: $black;
+    color: $white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     padding: 1rem 2rem;
+     margin-left: auto;
+
+    .bids-info{
+        color: $white;
+      
+        padding-left: 0;
         display: flex;
         align-items: left;
         justify-content: left;
-      margin-right: auto;
-        margin-left: 0;
-        outline: 2px solid red;
-        width: 60%;
-         
-           
-    .album-img {
-        flex:1;
-        outline: 2px solid red;
+  
+        width: 100%;
+        font-size: 1rem;
+        font-family: 'Noto Serif', serif;
+        font-weight: 400;
+        text-transform: capitalize;
+        border-bottom: 1px solid $grey;
+        padding-bottom: 1rem;
+        display: flex;
+        align-items: left;
+        justify-content: left;
     }
-       
-
-            
+    a {
+        margin-right: 0;
+        font-size: .8rem;
+            font-weight: 300;
+      
+    }
+  }
      }
 
-        .listing-update {
-            border-left: 2px solid #414040;
-            padding: 1rem 2rem;
-
-            p {
-                color: #414040;
-                width: 100%;
-                font-size: 1rem;
-                font-family: 'Noto Serif', serif;
-                font-weight: 400;
-                text-transform: capitalize;
-                border-bottom: 1px solid black;
-                padding-bottom: 1rem;
-
-                a {
-                    font-size: .8rem;
-                    font-weight: 300;
-
-                }
-            }
-        }
-
-        .bids-number {
-            margin-left: 1rem;
-        
-        }
 
         .seller-info {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: left;
-            padding-right: 4rem;
+           padding:1rem 1rem 1rem 0rem;
 
 .btn-seller {
     border:1px solid #414040;
