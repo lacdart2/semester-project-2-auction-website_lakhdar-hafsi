@@ -11642,13 +11642,6 @@ body {
   font-family: "Share Tech", sans-serif;
 }
 
-.listings-page, .hero {
-  /* background-image: url(../../images/coding-image.jpg); */
-  /*   background-color: rgba(0, 0, 0, 0.5); */
-  background-blend-mode: hue;
-  background-position: center;
-  overflow: hidden;
-}
 .listings-page .page-heading, .hero .page-heading {
   font-family: "Fjalla One", sans-serif;
   position: relative;
@@ -11731,7 +11724,7 @@ writing-mode: vertical-rl;
   margin-left: auto;
 }
 
-.listings-container, .most-wanted, .recent-added {
+.listings-container, .most-wanted, .recent-added, .most-wanted-short, .recent-added-short, .listings-container-short {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11742,7 +11735,7 @@ writing-mode: vertical-rl;
   /*   padding-bottom: 5rem; */
   /*  margin-top:5rem; */
 }
-.listings-container .listing, .most-wanted .listing, .recent-added .listing {
+.listings-container .listing, .most-wanted .listing, .recent-added .listing, .most-wanted-short .listing, .recent-added-short .listing, .listings-container-short .listing {
   padding: 0;
   border-radius: 0.2rem;
   text-transform: capitalize;
@@ -11750,7 +11743,7 @@ writing-mode: vertical-rl;
   font-weight: 100;
   padding-top: 0;
 }
-.listings-container .listing .card, .most-wanted .listing .card, .recent-added .listing .card {
+.listings-container .listing .card, .most-wanted .listing .card, .recent-added .listing .card, .most-wanted-short .listing .card, .recent-added-short .listing .card, .listings-container-short .listing .card {
   width: 200px;
   height: 300px;
   display: flex;
@@ -11761,36 +11754,35 @@ writing-mode: vertical-rl;
   flex-basis: 25%;
   font-family: "Noto Serif", serif;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-  outline: 2px solid red;
 }
-.listings-container .listing .card .card-body, .most-wanted .listing .card .card-body, .recent-added .listing .card .card-body {
+.listings-container .listing .card .card-body, .most-wanted .listing .card .card-body, .recent-added .listing .card .card-body, .most-wanted-short .listing .card .card-body, .recent-added-short .listing .card .card-body, .listings-container-short .listing .card .card-body {
   overflow-y: hidden;
   background-color: #0d29b6;
 }
-.listings-container .listing .card .card-body .card-top .btn-primary, .most-wanted .listing .card .card-body .card-top .btn-primary, .recent-added .listing .card .card-body .card-top .btn-primary {
+.listings-container .listing .card .card-body .card-top .btn-primary, .most-wanted .listing .card .card-body .card-top .btn-primary, .recent-added .listing .card .card-body .card-top .btn-primary, .most-wanted-short .listing .card .card-body .card-top .btn-primary, .recent-added-short .listing .card .card-body .card-top .btn-primary, .listings-container-short .listing .card .card-body .card-top .btn-primary {
   margin-top: auto;
   margin-bottom: 0;
 }
-.listings-container .listing .card .card-body .card-top .card-details, .most-wanted .listing .card .card-body .card-top .card-details, .recent-added .listing .card .card-body .card-top .card-details {
+.listings-container .listing .card .card-body .card-top .card-details, .most-wanted .listing .card .card-body .card-top .card-details, .recent-added .listing .card .card-body .card-top .card-details, .most-wanted-short .listing .card .card-body .card-top .card-details, .recent-added-short .listing .card .card-body .card-top .card-details, .listings-container-short .listing .card .card-body .card-top .card-details {
   height: 100px;
   overflow-y: hidden;
   color: #ede5e5;
 }
-.listings-container .listing .card .card-body .card-top .card-details small, .listings-container .listing .card .card-body .card-top .card-details .small, .most-wanted .listing .card .card-body .card-top .card-details small, .most-wanted .listing .card .card-body .card-top .card-details .small, .recent-added .listing .card .card-body .card-top .card-details small, .recent-added .listing .card .card-body .card-top .card-details .small {
+.listings-container .listing .card .card-body .card-top .card-details small, .listings-container .listing .card .card-body .card-top .card-details .small, .most-wanted .listing .card .card-body .card-top .card-details small, .most-wanted .listing .card .card-body .card-top .card-details .small, .recent-added .listing .card .card-body .card-top .card-details small, .recent-added .listing .card .card-body .card-top .card-details .small, .most-wanted-short .listing .card .card-body .card-top .card-details small, .most-wanted-short .listing .card .card-body .card-top .card-details .small, .recent-added-short .listing .card .card-body .card-top .card-details small, .recent-added-short .listing .card .card-body .card-top .card-details .small, .listings-container-short .listing .card .card-body .card-top .card-details small, .listings-container-short .listing .card .card-body .card-top .card-details .small {
   margin-top: auto;
   margin-bottom: 1rem;
   color: small;
   color: #f6f6f6;
 }
-.listings-container .listing .card .card-body .card-top .card-details .fa-solid, .most-wanted .listing .card .card-body .card-top .card-details .fa-solid, .recent-added .listing .card .card-body .card-top .card-details .fa-solid {
+.listings-container .listing .card .card-body .card-top .card-details .fa-solid, .most-wanted .listing .card .card-body .card-top .card-details .fa-solid, .recent-added .listing .card .card-body .card-top .card-details .fa-solid, .most-wanted-short .listing .card .card-body .card-top .card-details .fa-solid, .recent-added-short .listing .card .card-body .card-top .card-details .fa-solid, .listings-container-short .listing .card .card-body .card-top .card-details .fa-solid {
   color: #989898;
   padding-right: 0.5rem;
   color: #f6f6f6;
 }
-.listings-container .listing .card .card-body .card-top .card-details .fa-pen, .most-wanted .listing .card .card-body .card-top .card-details .fa-pen, .recent-added .listing .card .card-body .card-top .card-details .fa-pen {
+.listings-container .listing .card .card-body .card-top .card-details .fa-pen, .most-wanted .listing .card .card-body .card-top .card-details .fa-pen, .recent-added .listing .card .card-body .card-top .card-details .fa-pen, .most-wanted-short .listing .card .card-body .card-top .card-details .fa-pen, .recent-added-short .listing .card .card-body .card-top .card-details .fa-pen, .listings-container-short .listing .card .card-body .card-top .card-details .fa-pen {
   font-size: 0.8rem;
 }
-.listings-container .listing-card, .most-wanted .listing-card, .recent-added .listing-card {
+.listings-container .listing-card, .most-wanted .listing-card, .recent-added .listing-card, .most-wanted-short .listing-card, .recent-added-short .listing-card, .listings-container-short .listing-card {
   padding: 1rem;
   width: 220px;
   max-width: 230px;
@@ -11800,12 +11792,12 @@ writing-mode: vertical-rl;
   box-shadow: rgba(215, 215, 215, 0.09) 0px 0px 0px 1px;
   color: #f6f6f6;
 }
-.listings-container .listing-card:hover, .most-wanted .listing-card:hover, .recent-added .listing-card:hover {
+.listings-container .listing-card:hover, .most-wanted .listing-card:hover, .recent-added .listing-card:hover, .most-wanted-short .listing-card:hover, .recent-added-short .listing-card:hover, .listings-container-short .listing-card:hover {
   transform: scale(1.02);
   transform-origin: center;
   background-color: rgba(143, 137, 137, 0.5);
 }
-.listings-container .listing-card .btn-primary, .most-wanted .listing-card .btn-primary, .recent-added .listing-card .btn-primary {
+.listings-container .listing-card .btn-primary, .most-wanted .listing-card .btn-primary, .recent-added .listing-card .btn-primary, .most-wanted-short .listing-card .btn-primary, .recent-added-short .listing-card .btn-primary, .listings-container-short .listing-card .btn-primary {
   background-color: #0099DD;
 }
 
@@ -12181,7 +12173,7 @@ header, footer {
   border-radius: 5px;
   max-width: 70%;
 }
-.register-section .count-reg h4, .register-section .count-reg .h4, .register-section .count-reg h6, .register-section .count-reg .h6, .register-section .count-reg small, .register-section .count-reg .small {
+.register-section .count-reg h2, .register-section .count-reg .h2, .register-section .count-reg h4, .register-section .count-reg .h4, .register-section .count-reg h6, .register-section .count-reg .h6, .register-section .count-reg small, .register-section .count-reg .small {
   color: #ede5e5;
 }
 
@@ -12257,6 +12249,7 @@ header, footer {
   padding-left: 0;
   line-height: 1.5rem;
   color: #f6f6f6;
+  text-transform: capitalize;
 }
 .container p, .container a, .container span {
   font-family: "Fjalla One", sans-serif;

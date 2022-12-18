@@ -1,5 +1,5 @@
 
-.listings-container , .most-wanted, .recent-added{
+.listings-container , .most-wanted, .recent-added, .most-wanted-short, .recent-added-short, .listings-container-short{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,7 +37,8 @@
                      font-family: 'Noto Serif', serif;
                     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
                         rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-                        outline: 2px solid red;
+                    
+
            
                         .card-body {
                             overflow-y: hidden;
@@ -98,6 +99,7 @@
                             transform: scale(1.020);
                             transform-origin: center;
                             background-color: rgba(143, 137, 137, .5);
+                            
                         }
                      .btn-primary {
                         background-color: $btn-primary;

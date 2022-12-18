@@ -3,13 +3,12 @@ import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
 const action = "/listings";
 const getListingsURL = `${API_AUCTION_URL}${action}?_active=true&_seller=true&sort=created&sortOrder=desc`;
-/* const myListingsURL = `${API_AUCTION_URL}${action}?_tag=frame`; */
+
 
 
 
 export async function readLanding() {
 
-    /*    const shortListings = document.querySelector(".listings-container-short"); */
     const shortRecent = document.querySelector(".recent-added-short");
     const shortMostWanted = document.querySelector(".most-wanted-short");
 
