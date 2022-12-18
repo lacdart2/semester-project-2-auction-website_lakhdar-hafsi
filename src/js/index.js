@@ -1,23 +1,17 @@
 
 import createMenu from "./components/createMenu.js";
-/* import { read } from "../js/api_settings/posts/read.js"; */
-
 import * as apiCalls from "./api_settings/posts/index.js";
-
 import * as triggers from "./handlers/index.js";
 import * as ui from "./ui/index.js";
-
 import * as profileCalls from "./api_settings/profiles/index.js"
-import * as auth from "./api_settings/auth/index.js";
-/* import * as storage from "./utils/storage.js"; */
+
 
 
 
 const path = location.pathname;
 console.log(path);
 
-/* let registerPath = "/profile/register/index.html";
-let loginPath = "/profile/login/index.html"; */
+
 
 
 
@@ -63,7 +57,7 @@ else if (path === "/profiles/index.html") {
 else if (path === "/profile/register/index.html") {
 
     triggers.setRegisterFormListener();
-    ui.offerCD();
+    ui.offerToNewUser();
 
 }
 // auth login
@@ -94,19 +88,23 @@ else if (path === "/post/create/index.html") {
     /*  triggers.setCreateListingFormListener() */
     apiCalls.createListingForm();
     apiCalls.createListing();
+    /*    triggers.setCreateListingListener() */
 
 
     // listing - Details 
 } else if (path === "/post/detail/index.html") {
     createMenu();
     apiCalls.listingDetail();
-    /*     ui.setIntervalDetailCarousel(); */
+
+
+    triggers.submitBidListener();
+
 
     // listing - Edit 
 } else if (path === "/post/edit/index.html") {
-    createMenu();
-    triggers.setUpdateListingFormListener();
-    apiCalls.listingDetail();
+    /*    createMenu();
+       triggers.setUpdateListingFormListener();
+       apiCalls.listingDetail(); */
 
 }
 

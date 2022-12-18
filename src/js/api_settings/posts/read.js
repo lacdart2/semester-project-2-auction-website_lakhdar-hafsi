@@ -145,7 +145,7 @@ export async function read() {
             const ends = splitEndDate[0];
 
             // showing only active listings with media for better UI:
-            if (listing.media.length >= 1) {
+            if (listing.media.length >= 2) {
 
 
                 listingsContainer.innerHTML +=
@@ -176,7 +176,7 @@ export async function read() {
                                             </div>
                                      </div>     
                                       <div class="seller-info">
-                                        <a href= "/post/detail/index.html?id=${listing.id}" class="">
+                                        <a href= "/post/detail/index.html?id=${listing.id}" class="listing-owner">
                                                 @ ${listing.seller.name}          
                                          </a>
                                      </div>   

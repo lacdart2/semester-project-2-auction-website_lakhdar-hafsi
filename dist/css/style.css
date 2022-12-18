@@ -11466,6 +11466,7 @@ li.menu-section {
   margin-bottom: 1em;
   text-transform: capitalize;
   font-weight: 300;
+  color: #1b1616;
 }
 .countdown-wrapper .countdown-container .countdown {
   display: flex;
@@ -11503,76 +11504,107 @@ li.menu-section {
 }
 
 @media screen and (max-width: 500px) {
-  .hero {
-    height: 80vh;
-    overflow: hidden;
+  .listing-card {
+    min-width: 90vw;
   }
-  .hero .hero-heading {
-    font-size: 2.8rem;
-  }
-  .hero p {
-    font-size: 0.8rem;
-    min-width: 96%;
-    text-transform: capitalize;
-  }
-  .hero .btn-group-lg {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .hero .btn-group-lg .btn-lg, .hero .btn-group-lg > .btn {
-    min-width: 100%;
-  }
-  .hero .fixed-bottom .navbar-brand {
+  .listing-card .card-title {
     font-size: 1rem;
   }
-  .hero .listings-container {
+  .listing-card .listing-image {
+    min-width: 100%;
+  }
+  .listing-card .seller-info a {
+    padding-bottom: 1rem;
+  }
+  /* .hero {
+    height: 100vh;
+    overflow: hidden; 
+      .hero-heading {
+          font-size: 2.8rem;
+
+      }
+          p {
+              font-size: .8rem;
+              min-width: 96%;
+              text-transform: capitalize;
+
+
+          }
+          .btn-group-lg {
+              display: flex;
+              flex-direction: column;
+              gap: 1rem;
+              .btn-lg {
+                  min-width: 100%;
+              }
+          }
+
+
+                          .fixed-bottom {
+                              .navbar-brand {
+                                  font-size: 1rem;
+                              }
+                          }
+
+                          .listings-container {
+                              flex-direction: column;
+
+                              .card {
+                                  flex-basis: 100%;
+                                  flex-grow: 1;
+                              }
+                          }
+
+              } */
+  .home-listings-container .hero-listings {
     flex-direction: column;
+    height: 70vh;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 0;
+    gap: 4rem;
+    text-transform: capitalize;
   }
-  .hero .listings-container .card {
-    flex-basis: 100%;
-    flex-grow: 1;
+  .home-listings-container .hero-listings .latest-listings .listings-container-preview {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .home-listings-container .hero-listings .latest-listings .listings-container-preview .card {
+    text-align: left;
+    padding-left: 0;
+    min-width: 100%;
+  }
+  .home-listings-container .hero-listings .view-all-listings {
+    padding: 2rem 2rem 2rem 0;
+    font-size: 1.2rem;
+  }
+  .card-home {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  .card-home .card-heading .card-title {
+    font-size: 0.5rem;
+  }
+  .card {
+    outline: 5px solid blue;
+    min-height: 100vh;
+  }
+  .card .listing-info .listing-info-top .listing-image {
+    display: flex;
+    flex-direction: column;
+    min-width: 90vw;
+    margin: 1rem auto;
+    /*    .album-img {
+           outline: 3px solid red;
+           flex: 1;
+           min-width: 100%;
+           min-height: 100%;
+           object-fit: cover;
+
+       } */
   }
 }
-.home-listings-container .hero-listings {
-  flex-direction: column;
-  height: 70vh;
-  align-items: center;
-  justify-content: space-around;
-  padding-top: 0;
-  gap: 4rem;
-  text-transform: capitalize;
-}
-.home-listings-container .hero-listings .latest-listings .listings-container-preview {
-  display: flex;
-  flex-wrap: wrap;
-}
-.home-listings-container .hero-listings .latest-listings .listings-container-preview .card {
-  text-align: left;
-  padding-left: 0;
-  min-width: 100%;
-}
-.home-listings-container .hero-listings .view-all-listings {
-  padding: 2rem 2rem 2rem 0;
-  font-size: 1.2rem;
-}
-
-.card-home {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-}
-.card-home .card-heading .card-title {
-  font-size: 0.5rem;
-}
-.card-home .listing-image {
-  width: 100%;
-  height: 20%;
-}
-.card-home small, .card-home .small {
-  font-size: 0.5rem;
-}
-
 @media screen and (min-width: 501px) and (max-width: 768px) {
   .listings-container {
     width: 96%;
@@ -11858,46 +11890,81 @@ writing-mode: vertical-rl;
 .card-details .listing-info {
   margin-bottom: 1rem;
 }
-.card-details .listing-info .listing-image {
+.card-details .listing-info .listing-info-top {
   display: flex;
   align-items: left;
   justify-content: left;
-  margin-right: auto;
-  margin-left: 0;
-  outline: 2px solid red;
-  width: 60%;
+  padding: 2rem 1rem 1rem 0rem;
 }
-.card-details .listing-info .listing-image .album-img {
+.card-details .listing-info .listing-info-top #carouselExampleControls button .btn {
+  background-color: #1b1616;
+}
+.card-details .listing-info .listing-info-top #carouselExampleControls .carousel-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
   flex: 1;
-  outline: 2px solid red;
 }
-.card-details .listing-info .listing-update {
-  border-left: 2px solid #414040;
+.card-details .listing-info .listing-info-top #carouselExampleControls .carousel-inner .carousel-item.active {
+  max-width: 400px;
+  max-height: 450px;
+  overflow-y: hidden;
+}
+.card-details .listing-info .listing-info-top #carouselExampleControls .carousel-inner .carousel-item.active img {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  flex: 1;
+}
+.card-details .listing-info .listing-info-top .carousel {
+  width: 400px;
+  height: 400px;
+}
+.card-details .listing-info .listing-info-top .listing-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-details .listing-info .listing-info-top .listing-update {
+  background-color: #1b1616;
+  color: #ede5e5;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 1rem 2rem;
+  margin-left: auto;
 }
-.card-details .listing-info .listing-update p {
-  color: #414040;
+.card-details .listing-info .listing-info-top .listing-update .bids-info {
+  color: #ede5e5;
+  padding-left: 0;
+  display: flex;
+  align-items: left;
+  justify-content: left;
   width: 100%;
   font-size: 1rem;
   font-family: "Noto Serif", serif;
   font-weight: 400;
   text-transform: capitalize;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #989898;
   padding-bottom: 1rem;
+  display: flex;
+  align-items: left;
+  justify-content: left;
 }
-.card-details .listing-info .listing-update p a {
+.card-details .listing-info .listing-info-top .listing-update a {
+  margin-right: 0;
   font-size: 0.8rem;
   font-weight: 300;
-}
-.card-details .listing-info .bids-number {
-  margin-left: 1rem;
 }
 .card-details .listing-info .seller-info {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: left;
-  padding-right: 4rem;
+  padding: 1rem 1rem 1rem 0rem;
   /* .avatar {
                   .btn-avatar {
                        width: 50px;
