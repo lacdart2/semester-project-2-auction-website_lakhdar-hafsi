@@ -5,6 +5,8 @@ import *  as storage from "../../utils/storage.js";
 /* import * as ui from "../../ui/detailCarousel.js"; */
 /* import { createBid } from "../bids/placeBid.js"; */
 import { displayMessage } from "../../components/displayMessage.js";
+/* import { submitBid } from "./bid.js"; */
+/* import { placeBidListener } from "./placeBid.js"; */
 /* const messageContainer = document.querySelector(".message-container") */
 
 
@@ -85,7 +87,7 @@ export async function listingDetail() {
 
                 console.log(bid.created.toLocaleString());
                 console.log(bid.created.split('T')[1] + "/")
-
+                // bids history
                 console.log("bid:" + bid.amount + "by: " + bid.bidderName)
                 bidsContainer.innerHTML += `<div class="bid-row text-dark border-bottom p-2 d-flex flex-row align-items-center  justify-content-between">
                                                 <h6>${bid.amount}<i class="fa-solid fa-coins px-2 "></i>  by
@@ -96,7 +98,12 @@ export async function listingDetail() {
                                                 
                                                 <span class="text-dark fs-6">${bidDate} -- ${bidTime}</span>
                                             </div>`
+
+                /*  bidsContainer.innerHTML += `<p>Your bid ${Number(newBid)} is successfully sent </p>`
+                 placeBid(id, Number(newBid)); */
             });
+
+
         }
 
 
@@ -175,10 +182,11 @@ export async function listingDetail() {
 
         const listingContainer = document.querySelector(".listing-container");
         const bidsContainer = document.querySelector(".bids-content");
+        /*      const placeBidContainer = document.querySelector(".bids-content"); */
 
 
         listingContainer.innerHTML = `<a class="listing listing-details" href = "/">
-                                        <div data-end = ${json.endsAt} class="card">
+                                        <div data-end = ${json.endsAt} class="card ">
                                             <div class="card-body text-start overflow-hidden d-flex flex-column align-items-left">
                                                 <div class="card-top">
                     
@@ -189,43 +197,56 @@ export async function listingDetail() {
                                                            ${json.description}
                                                         </p>
                                                         <div class="listing-info p-2  ms-0 ps-0">
-                                                            <div class=" d-flex flex-row  align-items-center justify-content-between listing-row p-3 ps-0">
-                                                                <div class="listing-image d-flex flex-column align-items-center justify-content-start">
-                                                                    <a target="_blank"><img src="${json.media[0]}" class="album-img img-fluid rounded mb-2" alt="${json.title}"></a>
-                                                                    <a target="_blank"><img src="${json.media[1]}" class="album-img img-fluid rounded " alt="${json.title}"></a>
-                                                                 </div> 
-
-
-                                                                      
-                                                                <div class="listing-update text-dark d-flex flex-column col-lg-06 col-06 ">
-                                                                    <p class="bids-info">Total Bids :
-                                                                            <a href="/" class="btn btn-light">
+                                                         <div class="border listing-info-top col12-col-md12-col-sm-6 d-flex  align-items-left justify-content-left ">
+                                                            
+                                                           <div id="carouselExampleControls" class="carousel  listing-image slide" data-bs-ride="carousel">
+                                                                <div class="carousel-inner">
+                                                                    <div class="carousel-item active">
+                                                                    <img src="${json.media[0]}" class="" alt="${json.title}">
+                                                                    </div>
+                                                                    <div class="carousel-item">
+                                                                    <img src="${json.media[1]}" class="" alt="${json.title}">
+                                                                    </div>
+                                                                
+                                                                </div>
+                                                                <button class="carousel-control-prev " type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                                                    <span class="btn  carousel-control-prev-icon" aria-hidden="true"></span>
+                                                                    <span class="visually-hidden">Previous</span>
+                                                                </button>
+                                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                                                    <span class="btn  carousel-control-next-icon" aria-hidden="true"></span>
+                                                                    <span class="visually-hidden">Next</span>
+                                                                </button>
+                                                            </div>
+                                                        
+                                                             <div class="listing-update text-dark d-flex flex-column  ">
+                                                                    <p class="bids-info ">Total Bids :
+                                                                            <a href="/" class="btn btn-light ms-2">
                                                                                 ${bidsCounter}
                                                                             </a>
                                                                     </p>
-                                                                    <p class="bids-info">current bid :
-                                                                       <a href="/" class="btn btn-light ">
-                                                                            ${lastBidAmount} <i class="fa-solid fa-coins px-2"></i> 
+                                                                    <p class="bids-info">current bid : 
+                                                                       <a href="/" class="btn btn-light ms-2">
+                                                                            ${lastBidAmount} <i class="fa-solid fa-coins ms-2"></i> 
                                                                         </a>
                                                                     </p>
-                                                                    
-                                                                    
-                                                                    <p class="bids-info">Last Bider : 
-                                                                        <a href="/" class="btn btn-light ">
-                                                                            @ ${lastBider} 
+                                                                     <p class="bids-info">Last Bider :
+                                                                       <a href="/" class="btn btn-light ms-2">
+                                                                              @ ${lastBider} 
                                                                         </a>
                                                                     </p>
+                                                                   
                                                                 </div>
                                                          </div>
                                                               
-                                                         <div class="seller-info d-flex flex-row  align-items-center justify-content-between my-2">                                                        
+                                                         <div class="border seller-info d-flex flex-row  align-items-center justify-content-between my-2">                                                        
                                                                    
                                                                    <a href="/post/edit/index.html" class="btn btn-seller p-2 ">
                                                                         @ ${json.seller.name} <img class="profile-avatar" 
                                                                         src="${json.seller.avatar}"/>
                                                                     </a>
                                                                                                                               
-                                                                    <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                                                    <button type="submit" class="btn btn-primary " data-bs-toggle="modal"
                                                                               data-bs-target="#exampleModal">
                                                                                <i class="fa-solid fa-arrow-down pe-2 pt-2"></i>
                                                                                See all bids (${bidsCounter})
@@ -266,15 +287,17 @@ export async function listingDetail() {
                                                      </div>
                                                      <div class="expired"></div>
                                                  </section>
-                                                <div class="form-group mb-3">
-                                                   <label for="bid-input" class="py-3">Bid Now and win a great Deal</label>
-                                                    <input class="form-control" id="bid-input" placeholder="Higher Than ${lastBidAmount} " 
-                                                    type="text" name="bid">
-                                                </div>
-                                                <button type="button" class="btn btn-primary bid-btn">       
-                                                         PACE BID
-                                               </button>
+                                                 <form class="bid-form">
+                                                    <div class="form-group mb-3">
+                                                    <label for="bid-input" class="py-3">Bid Now and win a great Deal</label>
+                                                        <input class="form-control" id="bid-input" placeholder="Higher Than ${lastBidAmount} " 
+                                                        type="text" name="bid">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary ">       
+                                                            PACE BID
+                                                </button>
                                             
+                                            </form>
                                             </div>
                                         </div>
                                  </a> `
@@ -286,6 +309,9 @@ export async function listingDetail() {
         auctionStatus(json.created, json.endsAt);
         displayBids();
         remaining(json);
+        /*   submitBid(id, amount); */
+
+
 
         /*  placeBid() */
     } catch (error) {
@@ -296,7 +322,11 @@ export async function listingDetail() {
 
 
 };
-
+/* < div class="listing-image col-12 col-md-10 mt-lg-5 mt-5 text-dark d-flex flex-wrap
+    justify - content - center align - items - start gap - 2">
+    < a target="_blank" ><img src="${json.media[0]}" class="album-img rounded mb-2" alt="${json.title}"></>
+        <a target="_blank"><img src="${json.media[1]}" class="album-img  rounded " alt="${json.title}"></a>
+</div > */
 {/* <div class="listing-image row col-12">
     <img src="${json.media[0]}" class="rounded mb-2" alt="${json.title}">
         <img src="${json.media[1]}" class="img-thumbnail rounded" alt="${json.title}">

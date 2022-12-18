@@ -38,7 +38,7 @@ export async function login(profile) {
         const slicedName = loggedIn.split('@')[0];
 
         displayMessage("success", slicedName, " logged in", "", ".message-container")
-        setTimeout("location.href = '/profile/home/index.html';", 1500);
+        setTimeout("location.href = '/posts/index.html';", 1500);
 
 
     } else if (!accessToken) {

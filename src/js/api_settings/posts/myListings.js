@@ -1,4 +1,4 @@
-
+/* 
 import { read } from "./read.js";
 import * as storage from "../../utils/storage.js";
 
@@ -16,4 +16,4 @@ function findMyListings() {
         console.log(myListings);
     }
 
-}
+} */
