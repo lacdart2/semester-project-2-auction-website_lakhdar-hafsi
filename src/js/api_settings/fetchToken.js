@@ -20,4 +20,4 @@ export async function fetchToken(url, options = {}) {
         headers: headers()
     })
 
-}
+} 
