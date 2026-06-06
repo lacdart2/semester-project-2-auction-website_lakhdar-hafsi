@@ -1,48 +1,36 @@
-import { API_AUCTION_URL } from "../constants.js";
+// updated to use API_AUTH_URL - auth is no longer under /auction in v2
+import { API_AUTH_URL } from "../constants.js";
 import { displayMessage } from "../../components/displayMessage.js";
-import { offerToNewUser } from "../../ui/offerCountDown.js";
-/* import { relocateIndex } from "../../components/relocate.js"; */
-const arrows = document.querySelector(".reg-arrows");
 
-/* import { relocate } from "../../components/relocate.js"; */
-/* const messageContainer = document.querySelector(".message-container"); */
-const action = "/auth/register";
+const action = "/register";
 const method = "POST";
-/* offerToNewUser(); */
+
 export async function register(profile) {
 
-    const registerURL = API_AUCTION_URL + action;
-    console.log(registerURL);
+    const registerURL = API_AUTH_URL + action;
     const body = JSON.stringify(profile);
-    console.log(body);
+
     const response = await fetch(registerURL, {
         headers: {
             "Content-Type": "application/json",
-
         },
         method,
         body
-
     })
-    const result = await response.json();
 
-    console.log(result);
-    console.log(result.credits);
+    const json = await response.json();
+    console.log("api response:", json);
+    // v2 wraps the response in data property
+    const result = json.data || json;
 
-    if (result.id) {
-        /*    storage.saveToStorage("credit", accessToken) */
-        displayMessage("success", "", "Successfully registered", "You just earned 1000 credit", ".message-container")
-
+    if (result.name) {
+        displayMessage("success", "", "Successfully registered", "You just earned 1000 credits", ".message-container")
         setTimeout("location.href = '/profile/login/index.html';", 1800);
-
-
-
-    } else if (!result.id) {
-        displayMessage("warning", "", (result.message), ".message-container");
-
-        /*   arrows.classList.add("active"); */
+    } else {
+        // show error from api in case registration fails
+        const errorMsg = json.errors?.[0]?.message || json.message || "Registration failed";
+        displayMessage("warning", "", errorMsg, "", ".message-container");
     }
 
     return result;
 }
-/* "Invalid register details" */

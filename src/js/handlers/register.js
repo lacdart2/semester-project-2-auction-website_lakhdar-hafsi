@@ -6,20 +6,24 @@ export function setRegisterFormListener() {
     if (form) {
         form.addEventListener("submit", (event) => {
             event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
-            const profile = Object.fromEntries(formData.entries())
+            const formData = new FormData(event.target);
+            const profile = Object.fromEntries(formData.entries());
+
+            // v2 api requires avatar and banner as objects not as plain strings
+            if (profile.avatar) {
+                profile.avatar = { url: profile.avatar, alt: profile.name || "" };
+            } else {
+                delete profile.avatar;
+            }
+
+            if (profile.banner) {
+                profile.banner = { url: profile.banner, alt: profile.name || "" };
+            } else {
+                delete profile.banner;
+            }
+
             console.log(profile);
-
-
-            // const action = form.action;
-            //const method = form.method; 
-
-
-
-            // send to api :
-            // in another file (api/auth/register.js)
-            register(profile)
+            register(profile);
         })
     }
 }
