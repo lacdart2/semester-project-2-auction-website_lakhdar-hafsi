@@ -53,6 +53,20 @@ export async function getProfile() {
                 }
 
                     <!-- avatar + name -->
+                    ${profile.name === JSON.parse(localStorage.getItem("profile") || "{}")?.name
+                    ? `<div style="margin-bottom:1rem">
+                        <a href="/post/create/index.html" class="auth-submit" style="display:inline-flex;align-items:center;gap:6px;width:auto;padding:10px 20px;text-decoration:none">
+                            <i class="fa-solid fa-plus"></i> Create Listing
+                        </a>
+                    </div>`
+                    : ""
+                }
+                    ${profile.name === JSON.parse(localStorage.getItem("profile") || "{}")?.name
+                    ? `<a href="/profile/edit/index.html" class="btn-edit-listing" style="margin-bottom:1rem;display:inline-flex">
+                            <i class="fa-solid fa-pen"></i> Edit Profile
+                        </a>`
+                    : ""
+                }
                     <div class="profile-header">
                         <div class="profile-avatar-wrap">
                             ${avatarUrl

@@ -1,3 +1,5 @@
+import { fetchToken } from "../api_settings/fetchToken.js";
+
 export default function createMenu() {
     // check if user is logged in
     const userLogged = localStorage.getItem("profile");
@@ -17,9 +19,9 @@ export default function createMenu() {
 
     // credits
     const rawCredit = localStorage.getItem("credit");
-    const userCredit = (rawCredit && rawCredit !== "undefined" && rawCredit !== "null")
-        ? parseInt(rawCredit, 10)
-        : 0;
+    const userCredit = rawCredit !== null && rawCredit !== "undefined"
+        ? rawCredit
+        : "0";
 
     // hide login/register, update old logout button
     const navAuth = document.querySelector(".nav-auth");
@@ -39,7 +41,7 @@ export default function createMenu() {
                 : `<div class="user-avatar-initials">${userTag[0].toUpperCase()}</div>`
             }
                     <span class="user-name">${userTag}</span>
-                    <span class="user-credits">${userCredit} <i class="fa-solid fa-coins"></i></span>
+<span class="user-credits" id="navCredits">${userCredit} <i class="fa-solid fa-coins"></i></span>
                 </button>
                 <div class="user-dropdown-menu" id="userDropdownMenu">
                     <a href="/profile/detail/index.html?name=${userTag}" class="dropdown-item-link">
@@ -74,5 +76,16 @@ export default function createMenu() {
             localStorage.clear();
             location.href = "/index.html";
         });
+
+        // fetch credits from API
+        fetchToken(`https://v2.api.noroff.dev/auction/profiles/${userTag}`)
+            .then(r => r.json())
+            .then(json => {
+                const fresh = json.data?.credits ?? 0;
+                localStorage.setItem("credit", fresh);
+                const el = document.getElementById("navCredits");
+                if (el) el.innerHTML = `${fresh} <i class="fa-solid fa-coins"></i>`;
+            })
+            .catch(() => { });
     }
 }

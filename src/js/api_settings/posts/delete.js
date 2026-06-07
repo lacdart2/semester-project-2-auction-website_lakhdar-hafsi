@@ -1,22 +1,24 @@
-/* import { API_AUCTION_URL } from "../constants.js";
+import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
-
-const action = "/posts";
-const method = "delete";
+import { displayMessage } from "../../components/displayMessage.js";
 
 export async function deleteListing(id) {
+    const deleteURL = `${API_AUCTION_URL}/listings/${id}`;
 
-    if (!id) {
-        alert("update needs an ID");
+    try {
+        const response = await fetchToken(deleteURL, { method: "DELETE" });
+
+        if (response.ok) {
+            displayMessage("success", "", "Listing deleted.", "", ".message-container");
+            setTimeout(() => { location.href = "/posts/index.html"; }, 1200);
+        } else {
+            const json = await response.json();
+            const errMsg = json.errors?.[0]?.message || "Delete failed";
+            displayMessage("warning", "", errMsg, "", ".message-container");
+        }
+
+    } catch (error) {
+        console.error("deleteListing error:", error);
+        displayMessage("warning", "", "An error occurred.", "", ".message-container");
     }
-    const updateListingURL = `${API_AUCTION_URL}${action}/${id}`;
-
-
-    const response = await fetchToken(updateListingURL, {
-        method,
-
-    })
-
-    return await response.json();
 }
- */
