@@ -16,14 +16,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Share+Tech&display=swap"
         rel="stylesheet">
-    <link rel="icon" href="data:;base64,=" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="../../src/js/index.js" defer type="module"></script>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg pb-lg-3">
-            <div class="container-fluid">
+            <div class="container">
 
                 <!-- logo -->
                 <a class="navbar-brand" href="/index.html">
@@ -84,6 +84,12 @@
                     <div class="auth-field">
                         <label for="email">Email</label>
                         <input class="form-control" id="email" type="email" name="email" disabled>
+                    </div>
+                    <div class="auth-field">
+                        <label for="bio">Bio <span class="auth-optional">optional</span></label>
+                        <textarea class="form-control" id="bio" name="bio" rows="2"
+                            placeholder="Tell something about yourself..."
+                            style="background:#111;border:1px solid #2a2a2a;color:#d4d4d4;border-radius:4px;padding:10px 14px;font-size:14px;resize:vertical"></textarea>
                     </div>
                     <div class="auth-field">
                         <label for="avatar">Avatar URL <span class="auth-optional">optional</span></label>
