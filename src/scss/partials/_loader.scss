@@ -1,38 +1,21 @@
-.loader {
-   
-    top: 0;
-    left: 0;
-    width: 50vw;
-    height: 100vh;
+.loader-container {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.57s, visibility 0.75s;
-    z-index: -2;
-
-      &.hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
-
+    padding: 4rem 0;
 }
 
-
-.loader::after {
-    content: "";
-    width: 75px;
-    height: 75px;
-    border: 15px solid #ddd;
-    border-top-color: $green;
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #222;
+    border-top-color: #198754;
     border-radius: 50%;
-    animation: loader 0.75s ease infinite;
+    animation: loader 0.7s linear infinite;
 }
 
 @keyframes loader {
-    from {
-        transform: rotate(0turn);
-    }
-
     to {
         transform: rotate(1turn);
     }
