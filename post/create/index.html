@@ -4,24 +4,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create listing</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
-        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+    <title>Bidly — Create Listing</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="../../dist/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:;base64,=" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Share+Tech&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="../../src/js/index.js" defer type="module"></script>
-
 </head>
 
-<body class="">
+<body>
     <header>
-        <nav class="navbar navbar-expand-lg border-bottom pb-lg-3">
-            <div class="container-fluid ">
+        <nav class="navbar navbar-expand-lg pb-lg-3">
+            <div class="container">
+
+                <!-- logo -->
                 <a class="navbar-brand" href="/index.html">
                     <svg width="90" height="32" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg"
                         aria-label="Bidly">
@@ -29,163 +33,111 @@
                             font-family="'Share Tech', sans-serif" letter-spacing="2">BIDLY</text>
                     </svg>
                 </a>
-                <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active link-success text-white  me-3" aria-current="page"
-                                href="/index.html">Home</a>
+                            <a class="nav-link me-3" href="/index.html">Home</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link  text-white link-success me-3" href="../../profiles/index.html">
-                                Profiles
-                            </a>
+                            <a class="nav-link me-3" href="/profiles/index.html">Profiles</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link text-white link-success me-3" href="/posts/index.html">Listings
-                            </a>
-                        </li>
-
                         <li class="nav-item">
-                            <a class="nav-link text-success  me-3" href="#"><i
-                                    class="fa-light fa-plus small me-1"></i>Sell
-                            </a>
-                        </li>
-                        <li class="nav-item ms-5 menu-section">
-                            <a class="nav-link text-white  me-3" href="./profile/register/index.html">
-                                <div class="menu-container container-fluid  col-12 col-md-12 bg-dark ">
-
-                                </div>
-                            </a>
+                            <a class="nav-link me-3" href="/posts/index.html">Listings</a>
                         </li>
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+
+                    <!-- right: logged out -->
+                    <div class="nav-auth d-flex align-items-center gap-2">
+                        <a class="nav-link me-2 login-link" href="/profile/login/index.html">Login</a>
+                        <a class="btn-register" href="/profile/register/index.html">Register</a>
+                    </div>
+
+                    <!-- right: logged in -->
+                    <a class="logout-btn btn btn-dark nav-link me-3 p-2" href="">Logout</a>
+                    <div class="logging-status menu-container"></div>
+
                 </div>
             </div>
-            <!--     <a class="logout-btn btn btn-dark nav-link text-white me-3 p-2" href="">Logout</a>
-            <div class="logging-status"></div> -->
         </nav>
-
     </header>
-    <main class="flex-grow-1  text-light">
-        <div class="container hero ">
-            <div class="container-fluid">
-                <div class="form-container container row d-flex justify-content-center align-items-center ">
-                    <div class="col-12 col-md-6  ">
-                        <div
-                            class="posts-heading container  ps-0 p-2 mb-4  text-white d-flex align-items-start justify-content-start  mt-4">
-                            <h2 class="h1 ms-0 text-dark">Sell Your product</h2>
-                        </div>
-                        <div class="text-black pb-3"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-                            debitis repellendus
-                            doloribus rem repellat rerum saepe facere quos quisquam nisi in facilis fugit, ea eligendi?
-                            Quos fugit cumque labore voluptatem!
-                        </div>
 
-                        <!-- create a listing Button trigger modal  -->
-                        <button type="button" class="btn btn-primary " data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            create a listing
-                        </button>
+    <main>
+        <div class="container py-5">
+            <div class="auth-card" style="max-width:560px">
+                <h1 class="auth-title">Create a Listing</h1>
+                <p class="auth-sub">Fill in the details to list your item for auction</p>
 
+                <form class="createListingForm auth-form">
 
-
-                        <!-- create a listing Modal -->
-                        <div class="modal fade text-dark" id="exampleModal" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Create You Listing</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body bids-content border-0 p-2">
-
-                                        <form id="createListingForm"
-                                            class="createListingForm border p-3 px-3 text-dark">
-                                            <div class="form-group mb-3">
-                                                <label for="name">Title</label>
-                                                <input class="form-control title" type="text" id="title" name="title"
-                                                    required title="listing title can only contain letters to help users understand and find your item
-                                                                              .example: a running shoes">
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label for="description">description</label>
-                                                <textarea class="form-control description" name="description"
-                                                    required></textarea>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label for="tags">Tags</label>
-                                                <input class="form-control tags" type="text" name="tags">
-                                            </div>
-
-
-                                            <div class="mb-3">
-                                                <label for="formFileSm" class="form-label">Image URL</label>
-                                                <input class="form-control form-control-sm media" id="formFileSm"
-                                                    type="url">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="price">Start Price</label>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">NOK</span>
-                                                    <input type="text" id="price" class="form-control price"
-                                                        aria-label="Amount (to the nearest dollar)">
-                                                    <span class="input-group-text">.00</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-3">
-                                                <label for="tags">End Date</label>
-                                                <input class="form-control bidEndDate" type="date" name="date">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="tags">I accept terms and conditions as a Seller</label>
-                                                <input class="form-check-input " type="checkbox" value=""
-                                                    aria-label="Checkbox for following text input" required>
-
-                                            </div>
-                                            <button type="submit" class="btn btn-success submitBtn">Submit</button>
-                                            <div class="message-container"> </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div class="auth-field">
+                        <label for="title">Title</label>
+                        <input class="form-control title" id="title" type="text" name="title" required
+                            placeholder="e.g. Vintage ceramic vase">
                     </div>
-                </div>
+
+                    <div class="auth-field">
+                        <label for="description">Description</label>
+                        <textarea class="form-control description" id="description" name="description" required rows="3"
+                            placeholder="Describe your item..."
+                            style="background:#111;border:1px solid #2a2a2a;color:#d4d4d4;border-radius:4px;padding:10px 14px;font-size:14px;resize:vertical"></textarea>
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="media">Image URL <span class="auth-optional">optional</span></label>
+                        <input class="form-control media" id="media" type="url" name="media" placeholder="https://...">
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="tags">Tags <span class="auth-optional">optional, comma separated</span></label>
+                        <input class="form-control tags" id="tags" type="text" name="tags"
+                            placeholder="e.g. vintage, ceramic, art">
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="bidEndDate">End Date</label>
+                        <input class="form-control bidEndDate" id="bidEndDate" type="datetime-local" name="date"
+                            required id="bidEndDate"
+                            style="background:#111;border:1px solid #2a2a2a;color:#d4d4d4;border-radius:4px;padding:10px 14px;font-size:14px">
+                    </div>
+
+                    <button type="submit" class="auth-submit">Create Listing</button>
+                    <div class="message-container mt-3"></div>
+
+                </form>
             </div>
         </div>
     </main>
+
     <footer>
-        <nav class="navbar fixed-bottom bg-black pt-lg-3 border-top">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white"
-                    href="https://www.noroff.no/?gclid=CjwKCAjws--ZBhAXEiwAv-RNL2E0c6B6y4FUfaagoPHbfAHOP2K3NNm09Dub1Zi7Z0gq5OM0Nl4KxhoChQ8QAvD_BwE">Noroff
-                    Website
-                    <i class="fa-solid fa-link"></i>
+        <nav class="navbar fixed-bottom" style="background:#111;border-top:1px solid #1e1e1e">
+            <div class="container-fluid justify-content-between">
+                <a class="navbar-brand" href="/index.html">
+                    <svg width="70" height="24" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="0" y="26" fill="#198754" font-size="26" font-weight="700"
+                            font-family="'Share Tech', sans-serif" letter-spacing="2">BIDLY</text>
+                    </svg>
                 </a>
-            </div>
-            <div class="container-fluid">
-                <a class="navbar-brand text-white " href="https://github.com/lacdart2">Lakhdar Hafsi © 2022</a>
+                <span style="color:#888;font-size:0.8rem">Bidly © 2026</span>
             </div>
         </nav>
     </footer>
+    <!--  date and time related -->
+    <script>
+        const d = new Date();
+        d.setDate(d.getDate() + 7);
+        const pad = n => String(n).padStart(2, "0");
+        const val = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+        document.getElementById("bidEndDate").value = val;
+    </script>
 </body>
 
 </html>

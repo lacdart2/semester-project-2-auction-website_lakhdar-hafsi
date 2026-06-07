@@ -16,14 +16,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Share+Tech&display=swap"
         rel="stylesheet">
-    <link rel="icon" href="data:;base64,=" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="../../src/js/index.js" defer type="module"></script>
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg pb-lg-3">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="/index.html">
                     <svg width="90" height="32" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg"
                         aria-label="Bidly">
@@ -47,9 +47,6 @@
                         <li class="nav-item">
                             <a class="nav-link me-3" href="/posts/index.html">Listings</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link me-3" href="/post/create/index.html">+ Sell</a>
-                        </li>
                     </ul>
                     <a class="logout-btn btn btn-dark nav-link me-3 p-2" href="">Logout</a>
                     <div class="logging-status"></div>
@@ -61,7 +58,7 @@
     <main>
         <div class="container py-4">
             <div class="listing-container">Loading...</div>
-            <div class="message-container"></div>
+            <div class="message-container mt-3"></div>
 
             <!-- bids modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="bidsModalLabel" aria-hidden="true">
@@ -93,7 +90,7 @@
                             font-family="'Share Tech', sans-serif" letter-spacing="2">BIDLY</text>
                     </svg>
                 </a>
-                <span style="color:#444;font-size:0.8rem">Bidly © 2026</span>
+                <span style="color:#888;font-size:0.8rem">Bidly © 2026</span>
             </div>
         </nav>
     </footer>
