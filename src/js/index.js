@@ -57,3 +57,8 @@ if (path === "/index.html" || path === "/") {
     createMenu();
     triggers.setUpdateListingFormListener();
 }
+// profile - edit
+else if (path === "/profile/edit/index.html") {
+    createMenu();
+    triggers.setUpdateProfileListener();
+}
