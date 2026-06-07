@@ -1,49 +1,32 @@
 import { API_AUCTION_URL } from "../constants.js";
 import { fetchToken } from "../fetchToken.js";
-//import { displayMessage } from "../../components/displayMessage.js";
-//const message = document.querySelector(".message-container"); 
+import { displayMessage } from "../../components/displayMessage.js";
 
-const action = "/posts";
-const method = "put";
+const action = "/listings";
 
-
-
-
-export async function updateListing(postData) {
-
-    if (!postData.id) {
-        alert("update needs an ID");
-    }
-    const updateListingURL = `${API_AUCTION_URL}${action}/${postData.id}`;
+export async function updateListing(id, data) {
+    const updateURL = `${API_AUCTION_URL}${action}/${id}`;
 
     try {
+        const response = await fetchToken(updateURL, {
+            method: "PUT",
+            body: JSON.stringify(data)
+        });
+        const json = await response.json();
+        console.log("updateListing response:", json);
 
-
-        const response = await fetchToken(updateListingURL, {
-            method,
-            body: JSON.stringify(postData),
-
-
-        })
-        if (postData.created) {
-            // displayMessage("success", "Post created", ".message-container");
-            // form.reset();
-            console.log(postData.created)
+        if (json.data?.id) {
+            displayMessage("success", "", "Listing updated!", "", ".message-container");
+            setTimeout(() => {
+                location.href = `/post/detail/index.html?id=${id}`;
+            }, 1200);
+        } else {
+            const errMsg = json.errors?.[0]?.message || json.message || "Update failed";
+            displayMessage("warning", "", errMsg, "", ".message-container");
         }
-
-        if (post.error) {
-            //displayMessage("error", postData.message, ".message-container"); 
-        }
-        return await response.json();
 
     } catch (error) {
-
-        console.log(postData);
-        // displayMessage("error", "An error occurred", ".message-container");
+        console.error("updateListing error:", error);
+        displayMessage("warning", "", "An error occurred.", "", ".message-container");
     }
 }
-
-
-
-
-

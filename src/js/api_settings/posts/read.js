@@ -4,11 +4,50 @@ import { fetchToken } from "../fetchToken.js";
 const action = "/listings";
 const getListingsURL = `${API_AUCTION_URL}${action}?_seller=true&sort=created&sortOrder=desc&limit=100`;
 
-export async function read() {
+function buildCard(listing, badge = "") {
+    const imgUrl = listing.media?.[0]?.url || "";
+    const ends = listing.endsAt.split("T")[0];
+    const seller = listing.seller?.name || "unknown";
+    const bids = listing._count?.bids ?? 0;
 
+    const imgHtml = imgUrl
+        ? `<img src="${imgUrl}" alt="${listing.title}" loading="lazy">`
+        : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#111">
+             <i class="fa-regular fa-image" style="font-size:2rem;color:#444"></i>
+           </div>`;
+
+    const badgeHtml = badge
+        ? `<span class="bidly-badge">${badge}</span>`
+        : "";
+
+    return `
+        <a class="listing" href="/post/detail/index.html?id=${listing.id}">
+            <div class="bidly-card">
+                <div class="bidly-card-img">
+                    ${imgHtml}
+                    ${badgeHtml}
+                </div>
+                <div class="bidly-card-body">
+                    <p class="bidly-card-title">${listing.title}</p>
+                    <div class="bidly-card-meta">
+                        <span class="meta-item">
+                            <i class="fa-regular fa-clock"></i> Ends ${ends}
+                        </span>
+                    </div>
+                    <p class="bidly-seller">by <span>@${seller}</span></p>
+                    <div class="bidly-card-actions">
+                        <span class="btn-bids">${bids} bid${bids !== 1 ? "s" : ""}</span>
+                        <span class="btn-bid">Place a Bid</span>
+                    </div>
+                </div>
+            </div>
+        </a>`;
+}
+
+export async function read() {
     const listingsContainer = document.querySelector(".listings-container");
-    const recent = document.querySelector(".recent-added");
-    const mostWanted = document.querySelector(".most-wanted");
+    const recentContainer = document.querySelector(".recent-added");
+    const mostWantedContainer = document.querySelector(".most-wanted");
 
     try {
         const response = await fetchToken(getListingsURL);
@@ -19,180 +58,59 @@ export async function read() {
         console.log("listings:", listings?.length);
 
         if (!listings || listings.length === 0) {
-            if (listingsContainer) listingsContainer.innerHTML = "<p class='text-white'>No listings found.</p>";
+            if (listingsContainer) listingsContainer.innerHTML = "<p style='color:#888'>No listings found.</p>";
             return;
         }
 
-        const result = listings.filter(listing => listing._count.bids > 1);
-        const result2 = listings.filter(listing => listing._count.bids <= 1);
-        const totalArray = result.concat(result2);
-
-        // only to show active listings
         const today = new Date();
-        let stillActive = [];
-        totalArray.forEach(listing => {
-            const listingDate = new Date(listing.endsAt);
-            if (listingDate >= today) stillActive.push(listing);
-        });
-
+        const stillActive = listings.filter(l => new Date(l.endsAt) >= today);
         let filteredListings = stillActive;
 
+        // all active listings with search
         const displayListings = () => {
             if (!listingsContainer) return;
             if (filteredListings.length < 1) {
-                listingsContainer.innerHTML = `<h6 class="text-white">No listings matched your search</h6>`;
+                listingsContainer.innerHTML = `<p style="color:#888">No listings matched your search.</p>`;
                 return;
             }
-            listingsContainer.innerHTML = "";
-            filteredListings.forEach(listing => {
-                // v2 media is object {url, alt}
-                const imgUrl = listing.media?.[0]?.url || "";
-                const img2Url = listing.media?.[1]?.url || "";
-                const ends = listing.endsAt.split("T")[0];
-
-                if (listing.media.length >= 1) {
-                    listingsContainer.innerHTML +=
-                        `<a class="listing" href="/post/detail/index.html?id=${listing.id}">
-                            <div class="listing-card">
-                                <div class="card-body text-start overflow-hidden d-flex flex-column align-items-left">
-                                    <div class="card-top">
-                                        <div class="card-heading">
-                                            <h5 class="card-title text-white">${listing.title}</h5>
-                                        </div>
-                                        <div class="card-details">
-                                            <small class="listing-end-date">
-                                                <i class="fa-sharp fa-solid fa-clock p-3 ps-0"></i>
-                                                ${ends}
-                                            </small>
-                                        </div>
-                                        <div class="listing-image">
-                                            <img src="${imgUrl}" class="img-fluid rounded  first-img" alt="${listing.title}">
-                                            <img src="${img2Url}" class="img-fluid rounded second-img" alt="${listing.title}">
-                                            <span class="img-counter p-2"><i class="fa-solid fa-image p-2"></i>${listing.media.length}</span>
-                                            <div class="dots">
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                                <span class="dot"></span>
-                                            </div>
-                                        </div>
-                                        <div class="seller-info">
-                                            <a href="/post/detail/index.html?id=${listing.id}" class="listing-owner">
-                                                @ ${listing.seller?.name || "unknown"}
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-secondary">total bids: ${listing._count.bids}</a>
-                                    <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-primary mt-2">Place a Bid</a>
-                                </div>
-                            </div>
-                        </a>`;
-                }
-            });
+            listingsContainer.innerHTML = filteredListings.map(l => buildCard(l)).join("");
         };
 
         displayListings();
 
-        const searchInput = document.querySelector('.search-input');
+        // search 
+        const searchInput = document.querySelector(".search-input");
         if (searchInput) {
-            searchInput.addEventListener('keyup', () => {
-                const inputValue = searchInput.value.toLowerCase();
-                filteredListings = stillActive.filter(listing =>
-                    listing.title.toLowerCase().includes(inputValue) ||
-                    listing.tags?.some(tag => tag.toLowerCase().includes(inputValue))
+            searchInput.addEventListener("keyup", () => {
+                const q = searchInput.value.toLowerCase();
+                filteredListings = stillActive.filter(l =>
+                    l.title.toLowerCase().includes(q) ||
+                    l.tags?.some(t => t.toLowerCase().includes(q))
                 );
                 displayListings();
             });
         }
 
-        // recent listings - last 30 days
-        var thirtyDaysAgo = new Date(new Date().setDate(new Date().getDate() - 30));
-        const newsArray = listings.filter(listing => new Date(listing.created) > thirtyDaysAgo);
-        const fewRecent = newsArray.slice(-5);
+        // recent last 30 days
+        const thirtyDaysAgo = new Date(new Date().setDate(new Date().getDate() - 30));
+        const recent = stillActive.filter(l => new Date(l.created) > thirtyDaysAgo).slice(-8);
 
-        if (recent) {
-            recent.innerHTML = "";
-            fewRecent.forEach(listing => {
-                const imgUrl = listing.media?.[0]?.url || "";
-                const ends = listing.endsAt.split("T")[0];
-                if (listing.media.length >= 1) {
-                    recent.innerHTML +=
-                        `<a class="listing" href="/post/detail/index.html?id=${listing.id}">
-                            <div class="listing-card">
-                                <div class="card-body text-start overflow-hidden d-flex flex-column align-items-left">
-                                    <div class="card-top">
-                                        <div class="recent-added d-flex">
-                                            <p class="btn btn-primary ms-auto">New</p>
-                                        </div>
-                                        <div class="card-heading">
-                                            <h5 class="card-title">${listing.title}</h5>
-                                        </div>
-                                        <div class="card-details">
-                                            <small class="listing-end-date">
-                                                <i class="fa-sharp fa-solid fa-clock p-3 ps-0"></i>
-                                                ${ends}
-                                            </small>
-                                        </div>
-                                        <div class="listing-image">
-                                            <img src="${imgUrl}" class="img-fluid rounded first-img" alt="${listing.title}">
-                                        </div>
-                                        <div class="seller-info">
-                                            <a href="/post/detail/index.html?id=${listing.id}">
-                                                @ ${listing.seller?.name || "unknown"}
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-secondary">total bids: ${listing._count.bids}</a>
-                                    <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-primary mt-2">Place a Bid</a>
-                                </div>
-                            </div>
-                        </a>`;
-                }
-            });
+        if (recentContainer) {
+            recentContainer.innerHTML = recent.length
+                ? recent.map(l => buildCard(l, "New")).join("")
+                : "<p style='color:#888'>No recent listings.</p>";
         }
 
-        // most wanted
-        if (mostWanted) {
-            mostWanted.innerHTML = "";
-            result.forEach(listing => {
-                const imgUrl = listing.media?.[0]?.url || "";
-                const ends = listing.endsAt.split("T")[0];
-                if (listing._count.bids >= 6) {
-                    mostWanted.innerHTML +=
-                        `<a class="listing" href="/post/detail/index.html?id=${listing.id}">
-                            <div class="listing-card">
-                                <div class="card-body text-start overflow-hidden d-flex flex-column align-items-left">
-                                    <div class="card-top">
-                                        <div class="recent-added d-flex">
-                                            <p class="btn btn-primary ms-auto">Wanted</p>
-                                        </div>
-                                        <div class="card-heading">
-                                            <h5 class="card-title">${listing.title}</h5>
-                                        </div>
-                                        <div class="card-details">
-                                            <small class="listing-end-date">
-                                                <i class="fa-sharp fa-solid fa-clock p-3 ps-0"></i>
-                                                ${ends}
-                                            </small>
-                                        </div>
-                                        <div class="listing-image">
-                                            <img src="${imgUrl}" class="img-fluid rounded first-img" alt="${listing.title}">
-                                        </div>
-                                        <div class="seller-info">
-                                            <a href="/post/detail/index.html?id=${listing.id}">
-                                                @ ${listing.seller?.name || "unknown"}
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-secondary">total bids: ${listing._count.bids}</a>
-                                    <a href="/post/detail/index.html?id=${listing.id}" class="btn btn-primary mt-2">Place a Bid</a>
-                                </div>
-                            </div>
-                        </a>`;
-                }
-            });
+        // most wanted: 6 bids
+        const mostWanted = stillActive.filter(l => (l._count?.bids ?? 0) >= 6);
+
+        if (mostWantedContainer) {
+            mostWantedContainer.innerHTML = mostWanted.length
+                ? mostWanted.map(l => buildCard(l, "Wanted")).join("")
+                : "<p style='color:#888'>No high-bid listings yet.</p>";
         }
 
     } catch (error) {
-        console.log(error);
+        console.error("read error:", error);
     }
 }

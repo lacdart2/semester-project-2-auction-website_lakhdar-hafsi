@@ -110,22 +110,34 @@ export async function listingDetail() {
                             </div>
                             <div class="expired"></div>
                         </section>
-
-                        <!-- bid form -->
-                        <form class="bid-form">
-                            <label for="bid-input">Place your bid</label>
-                            <div class="bid-input-row">
-                                <input class="form-control" id="bid-input"
-                                    placeholder="Higher than ${lastBidAmount}"
-                                    type="number" name="bid">
-                                <button type="submit" class="btn-bid-submit">Place Bid</button>
-                            </div>
-                        </form>
+                        <!-- edit button - only to show to owner -->
+                       ${(() => { try { return JSON.parse(localStorage.getItem("profile"))?.name === sellerName; } catch (e) { return false; } })()
+                    ? `<a href="/post/edit/index.html?id=${listing.id}" class="btn-edit-listing">
+                                <i class="fa-solid fa-pen"></i> Edit Listing
+                            </a>`
+                    : ""
+                }
+                      <!-- bid form -->
+                        ${localStorage.getItem("profile") && localStorage.getItem("profile") !== "null"
+                    ? `<form class="bid-form">
+                                <label for="bid-input">Place your bid</label>
+                                <div class="bid-input-row">
+                                    <input class="form-control" id="bid-input" placeholder="Higher than ${lastBidAmount}" type="number" name="bid">
+                                    <button type="submit" class="btn-bid-submit">Place Bid</button>
+                                </div>
+                            </form>`
+                    : `<div class="bid-locked">
+                                <p>Want to place a bid?</p>
+                                <a href="/profile/login/index.html" class="btn-bid-submit" style="text-decoration:none;display:inline-block;text-align:center">Login to Bid</a>
+                                <a href="/profile/register/index.html" style="font-size:12px;color:#888;display:block;margin-top:8px;text-align:center">No account? Register free</a>
+                            </div>`
+                }
 
                         <button class="btn-see-bids" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">
                             See all bids (${bidsCounter})
                         </button>
+                        <div class="message-container mt-3"></div>
                     </div>
 
                 </div>`;

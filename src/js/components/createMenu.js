@@ -1,10 +1,5 @@
-import { getUsername } from "../utils/storage.js";
-import * as storage from "../utils/storage.js";
-
-const menu_container = document.querySelector(".menu-container");
-
 export default function createMenu() {
-    // check if user is logged in before doing anything
+    // check if user is logged in
     const userLogged = localStorage.getItem("profile");
     if (!userLogged || userLogged === "undefined" || userLogged === "null") return;
 
@@ -19,20 +14,65 @@ export default function createMenu() {
 
     const userTag = profile.name;
     const userAvatar = profile.avatar?.url || "";
-    const userCredit = localStorage.getItem("credit") || 0;
 
+    // credits
+    const rawCredit = localStorage.getItem("credit");
+    const userCredit = (rawCredit && rawCredit !== "undefined" && rawCredit !== "null")
+        ? parseInt(rawCredit, 10)
+        : 0;
+
+    // hide login/register, update old logout button
+    const navAuth = document.querySelector(".nav-auth");
+    if (navAuth) navAuth.classList.add("d-none");
+
+    const logoutBtn = document.querySelector(".logout-btn");
+    if (logoutBtn) logoutBtn.style.display = "none";
+
+    // render dropdown menu
+    const menu_container = document.querySelector(".menu-container");
     if (menu_container) {
         menu_container.innerHTML = `
-            <a href="/profile/detail/index.html">
-                <div class="menu">
-                    <div class="user-avatar">
-                        ${userTag}
-                        <img class="user-avatar-img" src="${userAvatar}" alt="user avatar"/>
-                    </div>
-                    <div class="creditSpan">
-                        <span class="creditMenu">${userCredit}<i class="fa-solid fa-coins"></i></span>
-                    </div>
+            <div class="user-dropdown">
+                <button class="user-dropdown-trigger" id="userMenuBtn">
+                    ${userAvatar
+                ? `<img src="${userAvatar}" alt="${userTag}" class="user-avatar-img">`
+                : `<div class="user-avatar-initials">${userTag[0].toUpperCase()}</div>`
+            }
+                    <span class="user-name">${userTag}</span>
+                    <span class="user-credits">${userCredit} <i class="fa-solid fa-coins"></i></span>
+                </button>
+                <div class="user-dropdown-menu" id="userDropdownMenu">
+                    <a href="/profile/detail/index.html?name=${userTag}" class="dropdown-item-link">
+                        <i class="fa-regular fa-user"></i> My Profile
+                    </a>
+                    <a href="/post/create/index.html" class="dropdown-item-link">
+                        <i class="fa-solid fa-plus"></i> + Sell
+                    </a>
+                    <hr class="dropdown-divider-line">
+                    <button class="dropdown-item-link dropdown-logout" id="logoutBtn">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                    </button>
                 </div>
-            </a>`;
+            </div>`;
+
+        // toggle dropdown
+        const btn = document.getElementById("userMenuBtn");
+        const menu = document.getElementById("userDropdownMenu");
+
+        btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.toggle("open");
+        });
+
+        // close on click outside
+        document.addEventListener("click", () => {
+            menu.classList.remove("open");
+        });
+
+        // logout
+        document.getElementById("logoutBtn").addEventListener("click", () => {
+            localStorage.clear();
+            location.href = "/index.html";
+        });
     }
 }
