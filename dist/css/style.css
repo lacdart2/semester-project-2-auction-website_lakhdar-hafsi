@@ -12646,12 +12646,19 @@ body {
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
+  left: auto;
   background: #161616;
   border: 1px solid #2a2a2a;
   border-radius: 6px;
   min-width: 180px;
   z-index: 1000;
   padding: 0.5rem 0;
+}
+@media (max-width: 768px) {
+  .user-dropdown-menu {
+    right: auto;
+    left: 0;
+  }
 }
 .user-dropdown-menu.open {
   display: block;

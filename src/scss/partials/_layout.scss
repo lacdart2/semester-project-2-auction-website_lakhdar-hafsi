@@ -94,6 +94,12 @@ body {
     position: absolute;
     top: calc(100% + 6px);
     right: 0;
+    left: auto;
+
+    @media (max-width: 768px) {
+        right: auto;
+        left: 0;
+    }
     background: #161616;
     border: 1px solid #2a2a2a;
     border-radius: 6px;
