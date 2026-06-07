@@ -1,68 +1,33 @@
+export function remaining(listing) {
+    const bidEndDate = new Date(listing.endsAt).getTime();
 
-const event = new Date();
+    const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = bidEndDate - now;
 
-export function remaining(latestJson) {
-
-    const deadline = document.getElementById("#count-down-section");
-    const time = document.querySelectorAll(".time");
-
-    setInterval(function () {
-
-        const endDate = latestJson.endsAt.toLocaleString();
-        console.log(endDate);
-
-        var bidEndDate = new Date(endDate).getTime();
-        console.log(bidEndDate);
-
-        // Update the count down every 1 second
-
-        // Get todays date and time
-        var now = new Date().getTime();
-        console.log(now);
-
-        // distance between now and the bid date
-        var distance = bidEndDate - now;
-        console.log(distance);
-
-        // Time calculations for days, hours, minutes and seconds
-
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        console.log(days, hours, minutes, seconds);
-
-
-
-
-
-
-        document.querySelector("#days").innerHTML = days;
-        document.querySelector("#hours").innerHTML = hours;
-        document.querySelector("#minutes").innerHTML = minutes;
-        document.querySelector("#seconds").innerHTML = seconds;
-
-        /*   countdown = document.querySelector("#countdown"); */
-
-
-        // If the countdown is finished write
         if (distance < 0) {
-            clearInterval(remaining);
-
-            deadline.innerHTML = `<h4 class="expired">sorry, this item has expired</h4>`;
-            time.innerHTML = "";
-
-            /*   document.querySelector("#minutes").innerHTML = "soon"; */
-
-            /*       document.querySelector("#days").innerHTML = "";
-                  document.querySelector("#hours").innerHTML = "";
-                  document.querySelector("#seconds").innerHTML = ""; */
-            /*    countdown.innerHTML = "time is up !"; */
+            clearInterval(interval);
+            const expired = document.querySelector(".expired");
+            if (expired) expired.innerHTML = `<p style="color:#888;font-size:14px">This listing has ended.</p>`;
+            const countdown = document.getElementById("countdown");
+            if (countdown) countdown.style.display = "none";
+            return;
         }
 
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+
+        if (daysEl) daysEl.textContent = days;
+        if (hoursEl) hoursEl.textContent = hours;
+        if (minutesEl) minutesEl.textContent = minutes;
+        if (secondsEl) secondsEl.textContent = seconds;
 
     }, 1000);
-
 }
-

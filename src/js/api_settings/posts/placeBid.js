@@ -1,62 +1,46 @@
-
-import { getFromStorage } from "../../utils/storage.js";
-
 import { fetchToken } from "../fetchToken.js";
-
 import { displayMessage } from "../../components/displayMessage.js";
 import { API_AUCTION_URL } from "../constants.js";
 
+export async function placeBid(id, amount) {
+    const placeBidURL = `${API_AUCTION_URL}/listings/${id}/bids`;
 
-const action = "/listings";
-const method = "POST";
+    try {
+        const response = await fetchToken(placeBidURL, {
+            method: "POST",
+            body: JSON.stringify({ amount: Number(amount) })
+        });
 
-const messageContainer = document.querySelector("message-container");
+        const json = await response.json();
 
-/* const userCredit = storage.getFromStorage("credit");
-const userToken = storage.getFromStorage("token"); */
-const params = new URLSearchParams(document.location.search);
-const bidId = params.get("id");
+        if (response.ok) {
+            // fetch updated profile to get new balanc
+            const profile = JSON.parse(localStorage.getItem("profile"));
+            if (profile?.name) {
+                const profileRes = await fetchToken(`${API_AUCTION_URL}/profiles/${profile.name}`);
+                const profileJson = await profileRes.json();
+                const newCredits = profileJson.data?.credits ?? 0;
 
-const placeBidURL = `${API_AUCTION_URL}${action}/${id}/bids`;
+                // update credits in localStorage and in navbar
+                localStorage.setItem("credit", newCredits);
+                const creditsEl = document.querySelector(".user-credits");
+                if (creditsEl) {
+                    creditsEl.innerHTML = `${newCredits} <i class="fa-solid fa-coins"></i>`;
+                }
+            }
 
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const inputElement = document.getElementById("bid-input");
-    const bidValue = inputElement.value;
-    // Place the bid using the bidValue
-    placeBid(listingId, bidValue)
-});
+            displayMessage("success", "", `Bid of ${amount} credits placed successfully!`, "", ".message-container");
+            // scrollto show the message
+            document.querySelector(".message-container")?.scrollIntoView({ behavior: "smooth" });
+            setTimeout(() => location.reload(), 1500);
 
+        } else {
+            const errMsg = json.errors?.[0]?.message || json.message || "Bid failed";
+            displayMessage("warning", "", errMsg, "", ".message-container");
+        }
 
-const formElement = document.querySelector("bid-form");
-
-
-export async function placeBid(accessToken, quantity, id) {
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json; charset=UTF-8",
-            Authorization: `Bearer ${accessToken}`,
-        },
-        body: JSON.stringify({
-            amount: quantity,
-        }),
-    };
-
-    const response = await fetchToken(
-        `${API_AUCTION_URL}listings/${id}/bids`,
-        options
-    );
-    const result = await response.json();
-
-
-    if (response.ok) {
-        displayMessage("success", "bit successfully place", ".message-container");
-        location.reload();
-        return result;
-    } else {
-
-        console.log(result);
-        displayMessage("error", result.errors[0].message, ".message-container");
+    } catch (error) {
+        console.error("placeBid error:", error);
+        displayMessage("warning", "", "An error occurred. Please try again.", "", ".message-container");
     }
 }
