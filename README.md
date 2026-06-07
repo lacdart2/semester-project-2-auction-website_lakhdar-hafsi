@@ -54,31 +54,33 @@ A full-featured auction platform where users can list items, place bids, and man
 
 ## Project Structure
 
-├── index.html # landing page
-├── posts/ # browse all listings
+```
+├── index.html               # landing page
+├── posts/                   # browse all listings
 ├── post/
-│ ├── create/ # create listing
-│ ├── detail/ # listing detail + bid
-│ └── edit/ # edit listing
+│   ├── create/              # create listing
+│   ├── detail/              # listing detail + bid
+│   └── edit/                # edit listing
 ├── profile/
-│ ├── login/ # login page
-│ ├── register/ # register page
-│ ├── detail/ # profile detail
-│ └── edit/ # edit profile
-├── profiles/ # all profiles
+│   ├── login/               # login page
+│   ├── register/            # register page
+│   ├── detail/              # profile detail
+│   └── edit/                # edit profile
+├── profiles/                # all profiles
 ├── src/
-│ ├── js/
-│ │ ├── api_settings/ # API calls (auth, listings, profiles)
-│ │ ├── components/ # createMenu, displayMessage
-│ │ ├── handlers/ # form listeners
-│ │ ├── ui/ # countdown timer
-│ │ └── utils/ # localStorage helpers
-│ └── scss/
-│ └── partials/ # SCSS modules
+│   ├── js/
+│   │   ├── api_settings/    # API calls (auth, listings, profiles)
+│   │   ├── components/      # createMenu, displayMessage
+│   │   ├── handlers/        # form listeners
+│   │   ├── ui/              # countdown timer
+│   │   └── utils/           # localStorage helpers
+│   └── scss/
+│       └── partials/        # SCSS modules
 ├── dist/
-│ └── css/ # compiled CSS
+│   └── css/                 # compiled CSS
 └── assets/
-└── images/ # logo and images
+    └── images/              # logo and images
+```
 
 ---
 
