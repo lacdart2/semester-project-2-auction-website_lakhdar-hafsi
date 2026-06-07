@@ -1,42 +1,36 @@
+import { updateProfile } from "../api_settings/profiles/update.js";
 
-import { getProfile, updateProfile } from "../api_settings/profiles/index.js";
-import { getFromStorage } from "../utils/storage.js";
-
-
-
-
-export async function setUpdateProfileListener() {
-
-
+export function setUpdateProfileListener() {
     const form = document.querySelector("#editProfile");
+    if (!form) return;
 
+    const profile = JSON.parse(localStorage.getItem("profile"));
+    if (!profile?.name) return;
 
-    if (form) {
-        const { name, email } = getFromStorage("profile");
-        form.name.value = name;
-        form.email.value = email;
+    // load name and email
+    const nameInput = form.querySelector("#name");
+    const emailInput = form.querySelector("#email");
+    if (nameInput) nameInput.value = profile.name;
+    if (emailInput) emailInput.value = profile.email || "";
 
-        const button = form.querySelector("button");
-        button.disable = true;
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-        const profile = await getProfile(name);
-        console.log(profile);
+        const avatarUrl = form.querySelector("#avatar")?.value.trim();
+        const bannerUrl = form.querySelector("#banner")?.value.trim();
+        const bioValue = form.querySelector("#bio")?.value.trim();
+        if (bioValue) data.bio = bioValue;
 
+        const data = {};
+        if (avatarUrl) data.avatar = { url: avatarUrl, alt: profile.name };
+        if (bannerUrl) data.banner = { url: bannerUrl, alt: profile.name };
 
-        form.banner.value = profile.banner;
-        form.banner.value = profile.avatar;
+        if (!avatarUrl && !bannerUrl) {
+            document.querySelector(".message-container").innerHTML =
+                `<div class="message warning"><i class="fa-solid fa-triangle-exclamation"></i><span>Enter avatar or banner URL.</span></div>`;
+            return;
+        }
 
-        button.disable = false;
-
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
-            const profile = Object.fromEntries(formData.entries())
-
-
-
-            updateProfile(profile)
-        })
-    }
-} 
+        updateProfile(profile.name, data);
+    });
+}
