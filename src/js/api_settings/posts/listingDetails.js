@@ -90,10 +90,12 @@ export async function listingDetail() {
                             </div>
                         </div>
 
-                        <div class="detail-seller">
+                      <div class="detail-seller">
+                        <a href="/profile/detail/index.html?name=${sellerName}" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;color:inherit">
                             ${sellerAvatar ? `<img src="${sellerAvatar}" alt="${sellerName}" class="seller-avatar">` : ""}
-                            <span>by @${sellerName}</span>
-                        </div>
+                            <span style="color:#888">by <span style="color:#bdbdbd">@${sellerName}</span></span>
+                        </a>
+                    </div>
 
                         <!-- countdown -->
                         <section id="count-down-section">
@@ -110,11 +112,26 @@ export async function listingDetail() {
                             </div>
                             <div class="expired"></div>
                         </section>
-                        <!-- edit button - only to show to owner -->
-                       ${(() => { try { return JSON.parse(localStorage.getItem("profile"))?.name === sellerName; } catch (e) { return false; } })()
-                    ? `<a href="/post/edit/index.html?id=${listing.id}" class="btn-edit-listing">
-                                <i class="fa-solid fa-pen"></i> Edit Listing
-                            </a>`
+                        <!-- edit button - delete button only shown to listing owner -->
+                                ${(() => { try { return JSON.parse(localStorage.getItem("profile"))?.name === sellerName; } catch (e) { return false; } })()
+                    ? `<div style="display:flex;gap:0.5rem">
+                        <a href="/post/edit/index.html?id=${listing.id}" class="btn-edit-listing">
+                            <i class="fa-solid fa-pen"></i> Edit
+                        </a>
+                        <button class="btn-edit-listing" style="color:#e05555;border-color:#444" onclick="document.getElementById('deleteModal').style.display='flex'">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </button>
+                    </div>
+                    <!-- delete confirm modal -->
+                    <div id="deleteModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;align-items:center;justify-content:center">
+                        <div style="background:#161616;border:1px solid #333;border-radius:8px;padding:2rem;max-width:400px;width:90%;text-align:center">
+                            <p style="color:#d4d4d4;margin-bottom:1.5rem">Delete <strong>${listing.title}</strong>? This cannot be undone.</p>
+                            <div style="display:flex;gap:0.75rem;justify-content:center">
+                                <button onclick="document.getElementById('deleteModal').style.display='none'" style="background:transparent;border:1px solid #444;color:#bdbdbd;padding:8px 20px;border-radius:4px;cursor:pointer">Cancel</button>
+                                <button id="confirmDeleteBtn" style="background:#e05555;border:none;color:#fff;padding:8px 20px;border-radius:4px;cursor:pointer;font-weight:600">Delete</button>
+                            </div>
+                        </div>
+                    </div>`
                     : ""
                 }
                       <!-- bid form -->
@@ -164,7 +181,13 @@ export async function listingDetail() {
         }
 
         remaining(listing);
-
+        // delete
+        const confirmBtn = document.getElementById("confirmDeleteBtn");
+        if (confirmBtn) {
+            confirmBtn.addEventListener("click", () => {
+                import("../api_settings/posts/delete.js").then(m => m.deleteListing(listing.id));
+            });
+        }
     } catch (error) {
         console.error(error);
         displayMessage("warning", "", "Failed to load listing", "", ".message-container");
