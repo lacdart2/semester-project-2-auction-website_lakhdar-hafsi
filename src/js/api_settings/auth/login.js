@@ -7,6 +7,7 @@ const action = "/login";
 const method = "POST";
 
 export async function login(profile) {
+    console.log("login function called");
     const loginURL = API_AUTH_URL + action;
     const body = JSON.stringify(profile);
 
@@ -21,11 +22,13 @@ export async function login(profile) {
     // v2 wraps the response in data property
     const json = await response.json();
     console.log("login response:", json);
-    const { credits, accessToken, ...user } = json.data || json;
+    const { accessToken, ...user } = json.data || json;
+    const credits = json.data?.credits ?? 0;
+    console.log("credits from API:", credits);
 
     storage.saveToStorage("token", accessToken);
     storage.saveToStorage("profile", user);
-    storage.saveToStorage("credit", credits);
+    localStorage.setItem("credit", credits);
 
     if (accessToken) {
         const slicedName = profile.email.split("@")[0];
