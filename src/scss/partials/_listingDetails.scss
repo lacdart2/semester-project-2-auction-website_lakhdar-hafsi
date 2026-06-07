@@ -66,7 +66,7 @@
 }
 
 .detail-meta {
-    border: 1px solid #222;
+    border: 1px solid #3a3a3a;
     border-radius: 6px;
     overflow: hidden;
 
@@ -75,7 +75,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 14px;
-        border-bottom: 1px solid #1e1e1e;
+    border-bottom: 1px solid #3a3a3a;
 
         &:last-child {
             border-bottom: none;
@@ -118,14 +118,14 @@
         height: 28px;
         border-radius: 50%;
         object-fit: cover;
-        border: 1px solid #2a2a2a;
+        border: 1px solid #333333;
     }
 }
 
 // countdown
 .countdown-wrapper {
-    background: #111;
-    border: 1px solid #222;
+background: #111;
+    border: 1px solid #3a3a3a;
     border-radius: 6px;
     padding: 14px 16px;
 }
@@ -186,7 +186,7 @@
 
     .form-control {
         background: #111;
-        border: 1px solid #2a2a2a;
+        border: 1px solid #333333;
         color: #d4d4d4;
         border-radius: 4px;
         font-size: 14px;
@@ -224,8 +224,8 @@
 
 .btn-see-bids {
     background: transparent;
-    border: 1px solid #2a2a2a;
-    color: #bdbdbd;
+    border: 1px solid #444;
+        color: #d4d4d4;
     padding: 10px 14px;
     border-radius: 4px;
     font-size: 13px;
@@ -244,7 +244,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 14px;
-    border-bottom: 1px solid #1e1e1e;
+    border-bottom: 1px solid #3a3a3a;
     font-size: 13px;
 
     .bid-amount {
@@ -259,5 +259,37 @@
     .bid-date {
         color: #555;
         font-size: 12px;
+    }
+}
+.bid-locked {
+    background: #111;
+border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    padding: 1.25rem;
+    text-align: center;
+
+    p {
+        color: #888;
+        font-size: 0.85rem;
+        margin-bottom: 0.75rem;
+    }
+}
+.btn-edit-listing {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid #333333;
+    color: #888;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+    align-self: flex-start;
+
+    &:hover {
+        border-color: #555;
+        color: #d4d4d4;
     }
 }

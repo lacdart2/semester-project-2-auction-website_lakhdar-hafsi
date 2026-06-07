@@ -7,97 +7,25 @@ a {
     }
 }
 
-.logo {
-    position: relative;
-
-    .fa-thin {
-        position: absolute;
-        bottom: -12px;
-        right: -10px;
-
-        font-size: 2rem;
-    }
-}
-
 body {
     font-family: 'Share Tech', sans-serif;
 }
-.listings-page, .hero {
 
-
-
+.listings-page,
+.hero {
     .page-heading {
-    font-family: 'Fjalla One', sans-serif;
-    position: relative;
-       
-    &::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 15%;
-    width: 50%;
-    height: 2px;
-    background-color: $bg-grey;
-    z-index: -1;
-       }
-                   &::before {
-                       content: "";
-                       position: absolute;
-                       top: 50%;
-                       left: 0;
-                       width: 8px;
-                       height: 8px;
-                       border-radius: 50%;
-                       background-color: $bg-grey;
-                   }
+        font-family: 'Share Tech', sans-serif;
+        font-size: 1.1rem;
+        letter-spacing: 0.04em;
+        color: $whity;
+        position: relative;
     }
-}
-
- .hero{
-   
-    min-height: 100vh;
- 
-
-    .btn-group-lg {
-
-        width: 100%;
-
-        .btn-outline-success {
-
-            &:hover {
-                background-color: $green;
-                color: $black;
-            }
-        }
-
-        .btn-light {
-            &:hover {
-                border-color: $grey;
-                color: $black;
-            }
-        }
-
-    }
-
-    .hero-heading {
-        font-size: 5rem;
-    }
-
-    p {
-        font-size: 2rem;
-        width: 70%;
-        text-transform: capitalize;
-        color: $white;
-    }
-  
 }
 
 .fixed-bottom {
     display: flex;
 
     .container-fluid {
-
-
         width: 50%;
         display: flex;
         align-items: center;
@@ -107,6 +35,4 @@ body {
             margin-bottom: 10px;
         }
     }
-
-
 }

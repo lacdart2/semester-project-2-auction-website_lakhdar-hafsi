@@ -1,26 +1,235 @@
+// profile cards grid
 .profiles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-bottom: 5rem;
+}
 
-font-family: 'Fjalla One', sans-serif;
-    .profile-card {
+.profile-card {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #222;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.15s;
 
+    &:hover {
+        border-color: #198754;
+        transform: translateY(-3px);
+    }
+}
 
-.card-body {
+.profile-card-img {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    background: #111;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+.profile-card-body {
+    padding: 0.75rem;
+}
+
+.profile-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #d4d4d4;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.72rem;
+    color: #888;
+
+    i {
+        color: #198754;
+        margin-right: 4px;
+        font-size: 0.65rem;
+    }
+}
+
+// profile detail page
+.profile-detail {
+    max-width: 800px;
+    padding-bottom: 5rem;
+}
+
+.profile-banner {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #161616;
+    margin-bottom: 1.5rem;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.profile-banner-empty {
+    background: linear-gradient(135deg, #161616, #1a1a1a);
+    border: 1px solid #222;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-avatar-lg {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #222;
+}
+
+.profile-avatar-placeholder {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 2px solid #222;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.5rem;
+    color: #888;
+    font-family: 'Share Tech', sans-serif;
+}
 
-.card-top {
-padding-left:0;
+.profile-username {
+    font-family: 'Share Tech', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #d4d4d4;
+    margin: 0;
+}
 
-min-width: 100%;
+.profile-email {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+}
 
-    .card-title {
-font-size : .8rem;
-min-width: 100%;
+.profile-stats-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
 
+.profile-stat {
+    background: #161616;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+
+    .stat-value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #d4d4d4;
+        line-height: 1;
     }
- } 
-}
+
+    .stat-label {
+        font-size: 0.7rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 4px;
+    }
 }
 
+.profile-section-title {
+    font-family: 'Share Tech', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888;
+    border-bottom: 1px solid #222;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.profile-listings-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.profile-listing-item {
+    width: 140px;
+    text-decoration: none;
+
+    img {
+        width: 140px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid #222;
+        display: block;
+        transition: border-color 0.15s;
+    }
+
+    &:hover img {
+        border-color: #198754;
+    }
+}
+
+.profile-listing-no-img {
+    width: 140px;
+    height: 100px;
+    background: #161616;
+    border: 1px solid #222;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-size: 1.5rem;
+}
+
+.profile-listing-title {
+    font-size: 0.75rem;
+    color: #d4d4d4;
+    text-transform: uppercase;
+    margin: 6px 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+}
+
+.profile-listing-ends {
+    font-size: 0.7rem;
+    color: #666;
+    margin: 0;
 }
